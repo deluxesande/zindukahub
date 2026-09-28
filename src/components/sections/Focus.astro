@@ -1,0 +1,26 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import FocusCard from '../ui/FocusCard.astro';
+import { focusAreas } from '../../data/site';
+---
+
+<section
+  id="focus"
+  aria-labelledby="focus-heading"
+  class="scroll-mt-6 bg-paper px-6 py-16 sm:px-10 sm:py-20 lg:py-24"
+>
+  <div class="mx-auto max-w-[1120px]">
+    <div class="mb-10 grid items-end gap-6 md:grid-cols-2 md:gap-16">
+      <SectionHeading id="focus-heading">Our focus</SectionHeading>
+      <p class="max-w-md text-base leading-8 font-medium text-ink/70 md:pb-2">
+        Talent, innovation, leadership, and entrepreneurship are at the heart of
+        Zinduka. Together, they give our shared ideas a sense of direction.
+      </p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-2 lg:gap-6">
+      {focusAreas.map((area) => (
+        <FocusCard area={area} />
+      ))}
+    </div>
+  </div>
+</section>

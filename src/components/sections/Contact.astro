@@ -1,0 +1,25 @@
+---
+import ContactForm from '../ui/ContactForm.astro';
+---
+
+<section
+  id="contact"
+  aria-labelledby="contact-heading"
+  class="scroll-mt-6 bg-brand px-6 py-16 text-white sm:px-10 sm:py-20"
+>
+  <div class="mx-auto grid max-w-[1120px] items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+    <div>
+      <h2
+        id="contact-heading"
+        class="max-w-md font-heading text-[40px] leading-[1.1] font-normal tracking-[-0.035em] sm:text-[54px]"
+      >
+        Good things begin with a conversation.
+      </h2>
+      <p class="mt-6 max-w-sm text-base leading-8 text-white/80">
+        Interested in partnering, sponsoring, or sharing an idea? Tell us a
+        little about yourself and how you’d like to work with Zinduka Hub.
+      </p>
+    </div>
+    <ContactForm />
+  </div>
+</section>

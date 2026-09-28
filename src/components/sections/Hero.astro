@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import hero from '../../assets/images/Hero.png';
+import Button from '../ui/Button.astro';
+import { site } from '../../data/site';
+---
+
+<section
+  id="home"
+  aria-labelledby="hero-heading"
+  class="overflow-hidden bg-paper pt-36 sm:pt-40"
+>
+  <div class="relative z-10 mx-auto max-w-4xl px-5 text-center">
+    <h1
+      id="hero-heading"
+      class="font-heading text-[44px] leading-[1.04] font-normal tracking-[-0.04em] text-brand sm:text-[68px] lg:text-[84px]"
+    >
+      A space for young
+      <br />
+      <em class="font-normal">ideas to grow.</em>
+    </h1>
+    <p class="mx-auto mt-5 max-w-lg text-[15px] leading-7 font-medium text-ink/70 sm:text-base">
+      Bringing talent, innovation, and an entrepreneurial spirit together at
+      Chuka University.
+    </p>
+    <Button href={site.partnerHref} class="mt-7">
+      Partner with us
+    </Button>
+  </div>
+  <div class="group mx-auto mt-8 max-w-[1120px] overflow-hidden px-3 sm:mt-4 sm:px-10">
+    <Image
+      src={hero}
+      alt="Members of the Zinduka Hub community"
+      widths={[640, 960, 1280, 1920]}
+      sizes="(max-width: 1120px) 100vw, 1120px"
+      width={1440}
+      quality={85}
+      loading="eager"
+      fetchpriority="high"
+      class="-mt-[12.7%] block w-full grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+    />
+  </div>
+</section>

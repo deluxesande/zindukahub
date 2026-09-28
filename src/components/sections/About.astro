@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import people from '../../assets/images/IMG_9264.png';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+---
+
+<section
+  id="about"
+  aria-labelledby="about-heading"
+  class="scroll-mt-6 overflow-hidden bg-brand pt-12 text-white sm:pt-16"
+>
+  <div class="mx-auto grid max-w-7xl px-6 sm:px-10 md:grid-cols-2 md:gap-8 lg:gap-12">
+    <div class="group relative order-2 min-h-[350px] md:order-1 md:min-h-[520px] lg:min-h-[560px]">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -bottom-40 -left-28 h-96 w-[130%] -rotate-12 rounded-[50%] bg-[#c98785]"
+      ></div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute top-12 left-[18%] h-[80%] w-[58%] rotate-[25deg] rounded-[50%] border-2 border-[#e9d9d6]/60"
+      ></div>
+      <Image
+        src={people}
+        alt="Two Zinduka Hub members sharing a moment together"
+        widths={[700, 1100, 1600]}
+        sizes="(max-width: 767px) 145vw, 72vw"
+        width={1400}
+        class="absolute bottom-0 left-1/2 w-[145%] max-w-none -translate-x-1/2 grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+      />
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -right-10 bottom-10 h-14 w-56 -rotate-[24deg] rounded-[50%] border-[5px] border-paper/75"
+      ></div>
+    </div>
+    <div class="relative z-10 order-1 flex flex-col items-start justify-center pb-10 md:order-2 md:py-12 lg:px-8">
+      <SectionHeading id="about-heading">Who we are</SectionHeading>
+      <p class="mt-6 max-w-md text-base leading-8 text-white/85">
+        Zinduka Hub is a program at Chuka University that promotes leadership
+        and an entrepreneurial culture by creating space for young entrepreneurs
+        to share ideas.
+      </p>
+      <p class="mt-4 max-w-md text-sm leading-7 text-white/75">
+        Our purpose is to connect ideas, talents, and skills among Kenyan youth,
+        helping them become better equipped to address the issues facing our
+        continent.
+      </p>
+      <Button href="#focus" variant="white" icon="arrowRight" class="mt-8">
+        Explore our focus
+      </Button>
+    </div>
+  </div>
+</section>
