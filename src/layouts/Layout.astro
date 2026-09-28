@@ -1,23 +1,36 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/fraunces/wght-italic.css';
+import '@fontsource/poppins/latin-400.css';
+import '@fontsource/poppins/latin-500.css';
+import '@fontsource/raleway/latin-400.css';
+import '@fontsource/raleway/latin-500.css';
+import { site } from '../data/site';
+---
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<!doctype html>
+<html lang="en" class="scroll-smooth motion-reduce:scroll-auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={site.description} />
+    <meta name="theme-color" content="#940d11" />
+    <meta
+      property="og:title"
+      content="Zinduka Hub — A space for young ideas to grow"
+    />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:type" content="website" />
+    <title>Zinduka Hub — A space for young ideas to grow</title>
+  </head>
+  <body class="m-0 bg-paper font-body text-ink antialiased selection:bg-brand selection:text-white">
+    <a
+      href="#main"
+      class="sr-only fixed top-2 left-2 z-50 rounded-lg bg-white px-5 py-3 font-ui text-sm text-brand shadow-lg focus:not-sr-only"
+    >
+      Skip to content
+    </a>
+    <slot />
+  </body>
+</html>
