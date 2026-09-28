@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand: #940d11;
+  --color-ink: #211c1c;
+  --color-paper: #f8f5f2;
+  --font-heading: 'Fraunces Variable', Georgia, serif;
+  --font-ui: 'Poppins', sans-serif;
+  --font-body: 'Raleway', sans-serif;
+}
