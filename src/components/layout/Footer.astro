@@ -1,0 +1,61 @@
+---
+import Logo from '../ui/Logo.astro';
+import Icon from '../ui/Icon.astro';
+import { navigation, site } from '../../data/site';
+---
+
+<footer class="bg-ink px-6 pt-14 pb-6 text-white sm:px-10">
+  <div class="mx-auto max-w-[1120px]">
+    <div class="grid gap-10 pb-12 sm:grid-cols-[1.2fr_0.8fr_1fr] sm:gap-12">
+      <div>
+        <a
+          href="#home"
+          aria-label="Zinduka Hub home"
+          class="inline-block rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+        >
+          <Logo inverted class="w-16" />
+        </a>
+        <p class="mt-5 max-w-[250px] text-sm leading-7 text-white/70">
+          Promoting talent, innovation, and an entrepreneurial culture among the
+          youth.
+        </p>
+      </div>
+      <div>
+        <p class="mb-5 font-ui text-sm font-medium text-white/80">Explore</p>
+        <nav
+          aria-label="Footer navigation"
+          class="flex flex-col items-start gap-3"
+        >
+          {navigation.map((item) => (
+            <a
+              href={item.href}
+              class="text-sm text-white/75 hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+      <div>
+        <p class="mb-5 font-ui text-sm font-medium text-white/80">
+          Get in touch
+        </p>
+        <a
+          href="#contact"
+          class="flex w-fit items-center gap-3 text-sm text-white/75 hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+        >
+          <Icon name="email" size={17} />
+          {site.email}
+        </a>
+        <p class="mt-4 flex items-center gap-3 text-sm text-white/70">
+          <Icon name="location" size={17} />
+          Chuka University, Kenya
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col justify-between gap-3 border-t border-white/10 pt-6 text-[11px] text-white/60 sm:flex-row">
+      <p>© {new Date().getFullYear()} Zinduka Hub.</p>
+      <p>Talent. Innovation. Entrepreneurship.</p>
+    </div>
+  </div>
+</footer>

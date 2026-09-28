@@ -1,0 +1,98 @@
+---
+import Logo from '../ui/Logo.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import { navigation, site } from '../../data/site';
+---
+
+<header class="absolute inset-x-0 top-4 z-30 mx-auto max-w-7xl px-4 sm:top-6 sm:px-8">
+  <div class="relative flex min-h-20 items-center justify-between gap-6 rounded-xl border border-black/5 bg-white px-5 py-3 shadow-sm shadow-black/[0.02] lg:px-8">
+    <a
+      href="#home"
+      aria-label="Zinduka Hub home"
+      class="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+    >
+      <Logo class="w-10" />
+    </a>
+    <nav aria-label="Main navigation" class="hidden items-center gap-8 lg:flex">
+      {navigation.map((item) => (
+        <a
+          href={item.href}
+          class="py-3 font-ui text-[11px] font-medium text-ink/75 transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:block">
+        <Button href={site.partnerHref}>Partner with us</Button>
+      </div>
+      <button
+        id="menu-toggle"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+        class="inline-flex size-11 cursor-pointer items-center justify-center rounded-full border border-brand/15 text-brand transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:bg-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand motion-reduce:transition-none lg:hidden"
+      >
+        <Icon name="menu" size={23} />
+      </button>
+    </div>
+    <nav
+      id="mobile-navigation"
+      aria-label="Mobile navigation"
+      hidden
+      class="absolute inset-x-0 top-[calc(100%+8px)] rounded-xl border border-black/5 bg-white p-5 shadow-lg lg:hidden"
+    >
+      {navigation.map((item) => (
+        <a
+          href={item.href}
+          class="block rounded-lg px-3 py-3 font-ui text-sm text-ink hover:bg-paper focus-visible:outline-2 focus-visible:outline-brand"
+        >
+          {item.label}
+        </a>
+      ))}
+      <Button href={site.partnerHref} class="mt-3 w-full">
+        Partner with us
+      </Button>
+    </nav>
+  </div>
+</header>
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const menu = document.querySelector<HTMLElement>('#mobile-navigation');
+  if (toggle && menu) {
+    const close = () => {
+      menu.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
+    };
+    toggle.addEventListener('click', () => {
+      const opening = menu.hidden;
+      menu.hidden = !opening;
+      toggle.setAttribute('aria-expanded', String(opening));
+      toggle.setAttribute(
+        'aria-label',
+        opening ? 'Close navigation' : 'Open navigation',
+      );
+    });
+    menu
+      .querySelectorAll('a')
+      .forEach((link) => link.addEventListener('click', close));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) {
+        close();
+        toggle.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (
+        event.target instanceof Node &&
+        !menu.contains(event.target) &&
+        !toggle.contains(event.target)
+      )
+        close();
+    });
+    window.matchMedia('(min-width: 64rem)').addEventListener('change', close);
+  }
+</script>
