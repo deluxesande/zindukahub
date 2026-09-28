@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import maroonLogo from '../../assets/logos/zinduka MAROON.png';
+interface Props {
+  inverted?: boolean;
+  class?: string;
+}
+const { inverted = false, class: className = 'w-12' } = Astro.props;
+---
+
+<span
+  class:list={[
+    'relative block aspect-[2489/2841] shrink-0 overflow-hidden',
+    className,
+  ]}
+>
+  <Image
+    src={maroonLogo}
+    alt="Zinduka Hub"
+    width={240}
+    class:list={[
+      'absolute -top-[20.03%] -left-[64.93%] h-[140.8%] w-[241.06%] max-w-none',
+      inverted && 'brightness-0 invert',
+    ]}
+    loading="eager"
+  />
+</span>

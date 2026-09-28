@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import team from '../../assets/images/aiesec.png';
+import people from '../../assets/images/IMG_9264.png';
+import type { focusAreas } from '../../data/site';
+
+type Area = (typeof focusAreas)[number];
+interface Props {
+  area: Area;
+}
+const { area } = Astro.props;
+const treatments = {
+  talent: 'bg-[#e9d9d6] text-brand',
+  innovation: 'bg-brand text-white',
+  leadership: 'bg-[#d8ceca] text-brand',
+  entrepreneurship: 'bg-[#c98785] text-ink',
+};
+const artwork = {
+  talent: {
+    field:
+      '-bottom-36 -left-12 h-64 w-[125%] -rotate-12 rounded-[50%] bg-brand',
+    loop: 'right-5 bottom-7 h-48 w-40 rotate-[24deg] border-[#c98785]',
+    stroke: '-right-8 bottom-6 w-56 -rotate-12 border-paper/80',
+  },
+  innovation: {
+    field: '-right-12 -bottom-28 h-80 w-80 rounded-full bg-[#c98785]',
+    loop: 'left-8 -bottom-24 h-64 w-48 -rotate-[32deg] border-[#e9d9d6]/65',
+    stroke: '-right-4 bottom-5 w-64 -rotate-12 border-paper/80',
+  },
+  leadership: {
+    field:
+      '-bottom-36 -left-12 h-72 w-[125%] rotate-12 rounded-[50%] bg-[#211c1c]',
+    loop: 'right-9 bottom-6 h-52 w-36 rotate-[25deg] border-brand/70',
+    stroke: '-left-6 bottom-8 w-64 rotate-12 border-[#c98785]',
+  },
+  entrepreneurship: {
+    field:
+      '-bottom-36 -left-16 h-72 w-[130%] -rotate-12 rounded-[50%] bg-brand',
+    loop: 'right-10 -bottom-8 h-64 w-44 -rotate-[28deg] border-[#e9d9d6]/80',
+    stroke: '-right-5 bottom-7 w-64 -rotate-12 border-paper/80',
+  },
+};
+const art = artwork[area.treatment];
+const showTeam =
+  area.treatment === 'talent' || area.treatment === 'entrepreneurship';
+const photo = showTeam ? team : people;
+---
+
+<article
+  class:list={[
+    'group relative isolate min-h-[290px] overflow-hidden rounded-md p-6 sm:min-h-[310px] sm:p-8',
+    treatments[area.treatment],
+  ]}
+>
+  <div
+    aria-hidden="true"
+    class:list={['pointer-events-none absolute', art.field]}
+  ></div>
+  <div
+    aria-hidden="true"
+    class:list={[
+      'pointer-events-none absolute rounded-[50%] border-[3px]',
+      art.loop,
+    ]}
+  ></div>
+  <h3 class="relative z-10 font-heading text-[29px] leading-[1.1] font-normal tracking-[-0.035em] sm:text-[35px]">
+    {area.title}
+  </h3>
+  <Image
+    src={photo}
+    alt=""
+    widths={[480, 800, 1100]}
+    sizes="(max-width: 767px) 70vw, 32vw"
+    width={900}
+    class:list={[
+      'absolute right-0 bottom-0 h-auto grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0',
+      showTeam ? 'w-[75%] sm:w-[60%]' : 'w-[92%] sm:w-[80%]',
+    ]}
+  />
+  <div
+    aria-hidden="true"
+    class:list={[
+      'pointer-events-none absolute h-7 rounded-[50%] border-[4px]',
+      art.stroke,
+    ]}
+  ></div>
+</article>

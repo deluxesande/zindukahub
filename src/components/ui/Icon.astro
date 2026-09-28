@@ -1,0 +1,25 @@
+---
+import { ArrowRight, Menu2, Location, Sms } from 'reicon-agent';
+const icons = {
+  arrowRight: ArrowRight,
+  menu: Menu2,
+  location: Location,
+  email: Sms,
+};
+interface Props {
+  name: keyof typeof icons;
+  size?: number;
+  class?: string;
+}
+const { name, size = 20, class: className } = Astro.props;
+// Only trusted, installed Reicon artwork is rendered here. No user HTML or custom paths.
+const markup = icons[name].toSvg({
+  size,
+  attrs: { 'aria-hidden': 'true', focusable: 'false' },
+});
+---
+
+<span
+  class:list={['inline-flex shrink-0 items-center justify-center', className]}
+  set:html={markup}
+/>

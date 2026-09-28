@@ -1,0 +1,76 @@
+---
+import FormField from './FormField.astro';
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY?.trim() ?? '';
+---
+
+<form
+  id="contact-form"
+  class="space-y-6"
+  method="post"
+  action="https://api.web3forms.com/submit"
+  data-configured={Boolean(accessKey)}
+>
+  <input type="hidden" name="access_key" value={accessKey} />
+  <input
+    type="hidden"
+    name="subject"
+    value="New enquiry from the Zinduka Hub website"
+  />
+  <input type="hidden" name="from_name" value="Zinduka Hub website" />
+  <input
+    type="checkbox"
+    name="botcheck"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+    class="hidden"
+  />
+  <div class="grid gap-6 sm:grid-cols-2">
+    <FormField
+      name="name"
+      label="Your name"
+      autocomplete="name"
+      maxLength={120}
+    />
+    <FormField
+      name="email"
+      label="Email address"
+      type="email"
+      autocomplete="email"
+      maxLength={254}
+    />
+  </div>
+  <FormField
+    name="organisation"
+    label="Organisation"
+    autocomplete="organization"
+    required={false}
+  />
+  <FormField
+    name="message"
+    label="How would you like to get involved?"
+    type="textarea"
+    maxLength={5000}
+  />
+  <button
+    type="submit"
+    class="flex min-h-12 w-full items-center justify-center rounded-full bg-white px-7 py-3 font-ui text-xs font-medium text-brand transition-[background-color,transform] duration-150 hover:bg-paper active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white disabled:cursor-wait disabled:opacity-60 motion-reduce:transition-none"
+  >
+    <span data-submit-label>Send message</span>
+  </button>
+  <p
+    id="contact-status"
+    role="status"
+    aria-live="polite"
+    class="text-sm leading-7 empty:hidden"
+  ></p>
+  <noscript>
+    <p class="text-sm">
+      Please enable JavaScript to send a message from this page.
+    </p>
+  </noscript>
+</form>
+
+<script>
+  import '../../scripts/contact-form';
+</script>
