@@ -1,46 +1,41 @@
-# Astro Starter Kit: Basics
+# Zinduka Hub
+
+A responsive, partner-focused homepage built with Astro, Tailwind CSS, and Reicon. Use **Bun** for all package and project commands.
+
+## Development
 
 ```sh
-bun create astro@latest -- --template basics
+bun install
+bun run dev --background
+bun run astro dev status
+bun run astro dev logs
+bun run astro dev stop
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Production
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+bun run build
+bun run preview
+bun run check
+bun run format:check
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Organization
 
-## 🧞 Commands
+- `src/components/layout`: shared header and footer
+- `src/components/sections`: homepage sections
+- `src/components/ui`: reusable buttons, icons, logo, headings, and focus cards
+- `src/data/site.ts`: contact details, navigation, and focus areas
+- `src/assets`: supplied brand logos and photography
+- `src/styles/global.css`: Tailwind import and brand theme tokens
 
-All commands are run from the root of the project, from a terminal:
+Fraunces titles, Poppins controls, and Raleway body text are served locally. Icons come from the installed `reicon-agent` package and render at build time. Photos are monochrome with their original colour revealed on hover. Image derivatives are optimized by Astro; supplied source assets remain unchanged.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+Partnership links lead to the on-page contact form. Content is drafted from the supplied brand guide and confirmed partner information without invented events, testimonials, programs, or impact figures.
 
-## 👀 Want to learn more?
+## Contact form
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The form uses [Web3Forms](https://docs.web3forms.com/how-to-guides/html-and-javascript) and keeps visitors on the page. Add your Web3Forms public access key to `.env` as `PUBLIC_WEB3FORMS_ACCESS_KEY` (see `.env.example`), then restart the dev server or rebuild for production. Use a key connected to `zindukahub@gmail.com`.
+
+Until a key is configured, submissions show an unavailable message and make no network request. The form includes required fields, a spam honeypot, duplicate-submit protection, a request timeout, and accessible status feedback. Failed requests retain the message for retry. Enable domain restrictions and spam protection in your Web3Forms dashboard before publishing. Live delivery must be verified after adding your key.
