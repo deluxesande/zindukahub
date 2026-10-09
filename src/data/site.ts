@@ -1,10 +1,15 @@
+const email = 'zindukahub@gmail.com';
+const emailSubject = 'Enquiry from the Zinduka Hub website';
+const emailBody = `Hi Zinduka Hub,
+
+I would like to get in touch about partnering with Zinduka Hub.`;
+
 export const site = {
-  email: 'zindukahub@gmail.com',
-  // Partners reach us by email; everyone else applies through the form below.
-  partnerHref: 'mailto:zindukahub@gmail.com',
-  // Google Form for creatives, exhibitors and innovators.
-  // TODO: replace with the live Google Form link.
-  applyFormHref: 'https://forms.gle/REPLACE_ME',
+  email,
+  // Opens the visitor's mail app with a pre-filled draft.
+  partnerHref: `mailto:${email}?subject=${encodeURIComponent(
+    emailSubject,
+  )}&body=${encodeURIComponent(emailBody)}`,
   description:
     'A space at Chuka University for young people to share ideas, talents, and skills. Partner with Zinduka Hub to promote talent, innovation, and an entrepreneurial culture.',
 };

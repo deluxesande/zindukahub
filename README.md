@@ -27,7 +27,7 @@ bun run format:check
 
 ## Pages
 
-- `/` — homepage: hero, who we are, focus, Zinduka 11.0 band, partnerships, partners, community, contact.
+- `/` — homepage: hero, who we are, focus, Zinduka 11.0 band, partnerships, partners, contact.
 - `/events` — upcoming and past events. Each event links out to its own booking page on our external events platform.
 - `/history` — the eleven Zinduka Hub editions, newest first, with 11.0 highlighted.
 - `/zinduka-11` — the current edition: theme **CREATE. EXHIBIT. ENTERPRISE**, the four tracks, the partner call, and call-to-action posters.
@@ -42,32 +42,30 @@ bun run format:check
 - `src/data/history.ts`: the eleven editions
 - `src/data/zinduka11.ts`: Zinduka 11.0 theme, tracks, partner call, and CTA posters
 - `src/data/partners.ts`: partner names and logos
-- `src/assets`: supplied brand logos, photography, and (to add) event/history posters
+- `src/assets`: supplied brand logos, photography, event posters, and CTA artwork
 - `src/styles/global.css`: Tailwind import and brand theme tokens
 
 Fraunces titles, Poppins controls, and Raleway body text are served locally. Icons come from the installed `reicon-agent` package and render at build time. The WhatsApp glyph is a single hardcoded brand SVG in `src/components/ui/WhatsAppIcon.astro`, since Reicon does not ship brand logos. Photos are monochrome with their original colour revealed on hover. Image derivatives are optimized by Astro; supplied source assets remain unchanged.
 
 ## Editing content
 
-Content is drafted from the supplied brand guide and confirmed partner information without invented events, testimonials, programs, or impact figures. Everything you need to update lives in `src/data` and is marked with `TODO` comments:
+Content is drafted from the supplied brand guide and confirmed partner information without invented events, testimonials, programs, or impact figures. Everything you need to update lives in `src/data`:
 
-- **Events** (`events.ts`): replace the placeholder titles, dates, venues and `bookingUrl` values, and set `status` to `'upcoming'` or `'past'`.
-- **History** (`history.ts`): edition 11.0 is real; replace the placeholder years, themes and descriptions for editions 1–10.
-- **Zinduka 11.0** (`zinduka11.ts`): the theme and track copy is a first draft — review and edit freely.
-- **Partners** (`partners.ts`): AIESEC is confirmed; add the rest.
-- **Social links** (`site.ts`): the WhatsApp group and Instagram links are set; update them here if they change.
+- **Events** (`events.ts`): event title, date, time, venue, track, status, poster, and the `bookingUrl` to the event's page on our Zenlipa events platform.
+- **History** (`history.ts`): the editions shown on `/history`, newest first.
+- **Zinduka 11.0** (`zinduka11.ts`): the theme, tracks, partner call, and CTA posters.
+- **Partners** (`partners.ts`): partner names and logos.
+- **Social links** (`site.ts`): the WhatsApp group and Instagram links, plus contact details.
 
 ### Adding artwork
 
-Poster and logo placeholders render as dashed boxes until real images are supplied. To add them:
+Drop image files into the matching folder under `src/assets/` and import them at the top of the relevant data file:
 
-1. Drop the file into `src/assets/posters/`, `src/assets/history/`, or `src/assets/logos/partners/`.
-2. Import it at the top of the relevant data file (e.g. `import poster from '../assets/posters/event-1.png';`).
-3. Set it on the `poster` / `image` / `logo` field instead of `null`.
+- Event posters → `src/assets/events/`
+- History edition artwork → `src/assets/history/`
+- Partner logos → `src/assets/logos/`
+- Zinduka 11.0 CTA posters → `src/assets/call to action/`
 
 ## Getting in touch
 
-There is no on-site form. Creatives, exhibitors and innovators apply through a Google Form, while partners get in touch by email. Both destinations live in `src/data/site.ts`:
-
-- `applyFormHref` — the public Google Form link (currently a placeholder).
-- `partnerHref` — a `mailto:` link to `site.email`.
+There is no on-site form. Partners get in touch by email using the `mailto:` link in `src/data/site.ts` (`partnerHref`).

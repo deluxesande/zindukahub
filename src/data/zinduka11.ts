@@ -1,9 +1,3 @@
-// ---------------------------------------------------------------------------
-// DRAFT COPY — written from the Zinduka 11.0 brief for review. Edit freely;
-// no dates, sponsors or figures have been invented. Replace the copy below
-// with the team's final wording before publishing.
-// ---------------------------------------------------------------------------
-
 import type { ImageMetadata } from 'astro';
 import type { IconName } from '../components/ui/icons';
 import ctaPartners from '../assets/call to action/1.png';
@@ -21,7 +15,7 @@ export interface Track {
 export interface CallToAction {
   key: string;
   label: string;
-  poster: ImageMetadata | null;
+  poster: ImageMetadata;
 }
 
 export const zinduka11 = {

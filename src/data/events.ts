@@ -15,8 +15,8 @@ export interface EventItem {
   description: string;
   /** Link to the booking page on our external events management platform. */
   bookingUrl: string;
-  /** Poster artwork. Set to an imported image once supplied. */
-  poster: ImageMetadata | null;
+  /** Poster artwork. */
+  poster: ImageMetadata;
   status: 'upcoming' | 'past';
 }
 

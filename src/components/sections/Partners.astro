@@ -18,7 +18,7 @@ import { partners } from '../../data/partners';
     </div>
     <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
       {partners.map((partner) => {
-        const body = partner.logo ? (
+        const body = (
           <Image
             src={partner.logo}
             alt={partner.name}
@@ -27,10 +27,6 @@ import { partners } from '../../data/partners';
             width={200}
             class="max-h-14 w-auto grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
           />
-        ) : (
-          <span class="text-center font-ui text-xs font-medium tracking-[0.12em] text-ink/40 uppercase">
-            {partner.name}
-          </span>
         );
 
         return (
