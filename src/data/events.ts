@@ -21,8 +21,8 @@ export interface EventItem {
 }
 
 // ---------------------------------------------------------------------------
-// TODO: replace each bookingUrl with the event's page on our external events
-// platform. Poster artwork lives in src/assets/events/.
+// Booking links point at our Zenlipa events platform. Poster artwork lives in
+// src/assets/events/.
 // ---------------------------------------------------------------------------
 export const events: EventItem[] = [
   {
@@ -33,7 +33,7 @@ export const events: EventItem[] = [
     track: 'Creatives',
     description:
       'An art and fashion expo to celebrate the season. Artists, bring your vision; fashionistas, bring your finest collections. Come dressed in character, step into the spotlight and showcase your creativity. Entry 250 KES.',
-    bookingUrl: 'https://REPLACE_ME',
+    bookingUrl: 'https://zenlipa.co.ke/events/TBO5Pw',
     poster: halloweenPoster,
     status: 'upcoming',
   },
@@ -44,7 +44,7 @@ export const events: EventItem[] = [
     location: 'SGT1, Science Complex',
     description:
       'An evening screening with popcorn and snacks provided. Tickets 100 KES.',
-    bookingUrl: 'https://REPLACE_ME',
+    bookingUrl: 'https://zenlipa.co.ke/events/K1kgTV',
     poster: movieNightPoster,
     status: 'past',
   },
