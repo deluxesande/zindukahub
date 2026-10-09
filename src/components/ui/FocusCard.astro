@@ -2,8 +2,6 @@
 import { Image } from 'astro:assets';
 import team from '../../assets/images/aiesec.png';
 import people from '../../assets/images/IMG_9264.png';
-import talentPhoto from '../../assets/images/IMG_6682.png';
-import innovationPhoto from '../../assets/images/IMG_6499.png';
 import type { focusAreas } from '../../data/site';
 
 type Area = (typeof focusAreas)[number];
@@ -43,14 +41,9 @@ const artwork = {
   },
 };
 const art = artwork[area.treatment];
-const photos = {
-  talent: talentPhoto,
-  innovation: innovationPhoto,
-  leadership: people,
-  entrepreneurship: team,
-};
-const isTeam = area.treatment === 'entrepreneurship';
-const photo = photos[area.treatment];
+const showTeam =
+  area.treatment === 'talent' || area.treatment === 'entrepreneurship';
+const photo = showTeam ? team : people;
 ---
 
 <article
@@ -81,7 +74,7 @@ const photo = photos[area.treatment];
     width={900}
     class:list={[
       'absolute right-0 bottom-0 h-auto grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0',
-      isTeam ? 'w-[75%] sm:w-[60%]' : 'w-[92%] sm:w-[80%]',
+      showTeam ? 'w-[75%] sm:w-[60%]' : 'w-[92%] sm:w-[80%]',
     ]}
   />
   <div
