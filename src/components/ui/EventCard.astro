@@ -1,0 +1,62 @@
+---
+import Icon from './Icon.astro';
+import PosterSlot from './PosterSlot.astro';
+import type { EventItem } from '../../data/events';
+
+interface Props {
+  event: EventItem;
+}
+const { event } = Astro.props;
+const isUpcoming = event.status === 'upcoming';
+---
+
+<article class="group grid overflow-hidden rounded-md border border-ink/10 bg-white shadow-sm shadow-black/[0.02] md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)]">
+  <PosterSlot
+    poster={event.poster}
+    alt={`${event.title} poster`}
+    ratio="aspect-[4/5]"
+    class="border-b border-ink/10 md:border-b-0 md:border-r"
+  />
+  <div class="flex flex-col gap-4 p-6 sm:p-8">
+    <div class="flex flex-wrap items-center gap-3">
+      {event.track && (
+        <span class="rounded-full bg-brand/10 px-3 py-1 font-ui text-[10px] font-medium tracking-[0.14em] text-brand uppercase">
+          {event.track}
+        </span>
+      )}
+      {!isUpcoming && (
+        <span class="font-ui text-[10px] font-medium tracking-[0.14em] text-ink/45 uppercase">
+          Past event
+        </span>
+      )}
+    </div>
+    <h3 class="font-heading text-[28px] leading-[1.1] font-normal tracking-[-0.03em] text-ink">
+      {event.title}
+    </h3>
+    <ul class="space-y-2 text-sm text-ink/70">
+      <li class="flex items-center gap-3">
+        <Icon name="calendar" size={17} class="text-brand" />
+        <span>
+          {event.date}
+          {event.time && ` · ${event.time}`}
+        </span>
+      </li>
+      <li class="flex items-center gap-3">
+        <Icon name="venue" size={17} class="text-brand" />
+        <span>{event.location}</span>
+      </li>
+    </ul>
+    <p class="text-sm leading-7 text-ink/70">{event.description}</p>
+    {isUpcoming && (
+      <a
+        href={event.bookingUrl}
+        target="_blank"
+        rel="noopener"
+        class="mt-2 inline-flex min-h-12 w-fit items-center justify-center gap-3 rounded-full bg-brand px-7 py-3 font-ui text-xs font-medium text-white transition-[background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:bg-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none"
+      >
+        Book on our events platform
+        <Icon name="arrowRight" size={18} />
+      </a>
+    )}
+  </div>
+</article>

@@ -1,5 +1,6 @@
 ---
-import ContactForm from '../ui/ContactForm.astro';
+import Button from '../ui/Button.astro';
+import { site } from '../../data/site';
 ---
 
 <section
@@ -7,19 +8,37 @@ import ContactForm from '../ui/ContactForm.astro';
   aria-labelledby="contact-heading"
   class="scroll-mt-6 bg-brand px-6 py-16 text-white sm:px-10 sm:py-20"
 >
-  <div class="mx-auto grid max-w-[1120px] items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-    <div>
+  <div class="mx-auto max-w-[1120px]">
+    <div class="max-w-xl">
       <h2
         id="contact-heading"
-        class="max-w-md font-heading text-[40px] leading-[1.1] font-normal tracking-[-0.035em] sm:text-[54px]"
+        class="font-heading text-[40px] leading-[1.1] font-normal tracking-[-0.035em] sm:text-[54px]"
       >
         Good things begin with a conversation.
       </h2>
-      <p class="mt-6 max-w-sm text-base leading-8 text-white/80">
-        Interested in partnering, sponsoring, or sharing an idea? Tell us a
-        little about yourself and how you’d like to work with Zinduka Hub.
+      <p class="mt-6 max-w-md text-base leading-8 text-white/80">
+        Whether you want to take part or support the work, here is how to reach
+        us.
       </p>
     </div>
-    <ContactForm />
+    <div class="mt-10 max-w-md">
+      <div class="flex flex-col items-start rounded-md border border-white/15 bg-white/5 p-7 sm:p-8">
+        <h3 class="font-heading text-[26px] leading-tight font-normal tracking-[-0.03em]">
+          Partners &amp; sponsors
+        </h3>
+        <p class="mt-3 text-sm leading-7 text-white/80">
+          Want to support our initiatives? Send us an email and let&rsquo;s
+          start the conversation.
+        </p>
+        <Button
+          href={site.partnerHref}
+          variant="white"
+          icon="email"
+          class="mt-6"
+        >
+          {site.email}
+        </Button>
+      </div>
+    </div>
   </div>
 </section>

@@ -1,7 +1,10 @@
 ---
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import team from '../../assets/images/aiesec.png';
 import people from '../../assets/images/IMG_9264.png';
+import shotA from '../../assets/images/DSC_0639.png';
+import shotB from '../../assets/images/IMG_6682.png';
 import type { focusAreas } from '../../data/site';
 
 type Area = (typeof focusAreas)[number];
@@ -41,9 +44,14 @@ const artwork = {
   },
 };
 const art = artwork[area.treatment];
-const showTeam =
-  area.treatment === 'talent' || area.treatment === 'entrepreneurship';
-const photo = showTeam ? team : people;
+const photos: Record<Area['treatment'], { src: ImageMetadata; width: string }> =
+  {
+    talent: { src: team, width: 'w-[75%] sm:w-[60%]' },
+    innovation: { src: people, width: 'w-[92%] sm:w-[80%]' },
+    leadership: { src: shotA, width: 'w-[92%] sm:w-[80%]' },
+    entrepreneurship: { src: shotB, width: 'w-[92%] sm:w-[80%]' },
+  };
+const photo = photos[area.treatment];
 ---
 
 <article
@@ -67,14 +75,14 @@ const photo = showTeam ? team : people;
     {area.title}
   </h3>
   <Image
-    src={photo}
+    src={photo.src}
     alt=""
     widths={[480, 800, 1100]}
     sizes="(max-width: 767px) 70vw, 32vw"
     width={900}
     class:list={[
       'absolute right-0 bottom-0 h-auto grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0',
-      showTeam ? 'w-[75%] sm:w-[60%]' : 'w-[92%] sm:w-[80%]',
+      photo.width,
     ]}
   />
   <div

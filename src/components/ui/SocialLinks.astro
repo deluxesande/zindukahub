@@ -1,0 +1,42 @@
+---
+import Icon from './Icon.astro';
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import { social } from '../../data/site';
+
+interface Props {
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+const { tone = 'light', class: className } = Astro.props;
+const linkClass =
+  tone === 'light'
+    ? 'text-white/75 hover:text-white focus-visible:outline-white'
+    : 'text-ink/75 hover:text-brand focus-visible:outline-brand';
+---
+
+<div class:list={['flex flex-col items-start gap-3', className]}>
+  <a
+    href={social.whatsapp.href}
+    target="_blank"
+    rel="noopener"
+    class:list={[
+      'inline-flex items-center gap-3 text-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4',
+      linkClass,
+    ]}
+  >
+    <WhatsAppIcon size={18} />
+    {social.whatsapp.label}
+  </a>
+  <a
+    href={social.instagram.href}
+    target="_blank"
+    rel="noopener"
+    class:list={[
+      'inline-flex items-center gap-3 text-sm hover:underline focus-visible:outline-2 focus-visible:outline-offset-4',
+      linkClass,
+    ]}
+  >
+    <Icon name="instagram" size={18} />
+    {social.instagram.label}
+  </a>
+</div>

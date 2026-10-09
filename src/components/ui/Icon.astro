@@ -1,13 +1,8 @@
 ---
-import { ArrowRight, Menu2, Location, Sms } from 'reicon-agent';
-const icons = {
-  arrowRight: ArrowRight,
-  menu: Menu2,
-  location: Location,
-  email: Sms,
-};
+import { icons, type IconName } from './icons';
+
 interface Props {
-  name: keyof typeof icons;
+  name: IconName;
   size?: number;
   class?: string;
 }

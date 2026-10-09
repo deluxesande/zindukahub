@@ -1,22 +1,36 @@
 ---
 import Icon from './Icon.astro';
+import type { IconName } from './icons';
 interface Props {
   href: string;
-  variant?: 'brand' | 'white' | 'outline';
-  icon?: 'arrowRight';
+  variant?: 'brand' | 'white' | 'outline' | 'outlineLight';
+  icon?: IconName;
   class?: string;
+  target?: string;
+  rel?: string;
 }
-const { href, variant = 'brand', icon, class: className } = Astro.props;
+const {
+  href,
+  variant = 'brand',
+  icon,
+  class: className,
+  target,
+  rel,
+} = Astro.props;
 const variants = {
   brand: 'bg-brand text-white hover:bg-ink',
   white: 'bg-white text-brand hover:bg-paper',
   outline:
     'border border-brand/25 text-brand hover:border-brand hover:bg-brand/5',
+  outlineLight:
+    'border border-white/30 text-white hover:border-white hover:bg-white/10',
 };
 ---
 
 <a
   href={href}
+  {target}
+  {rel}
   class:list={[
     'inline-flex min-h-12 items-center justify-center rounded-full px-7 py-3 font-ui text-xs font-medium transition-[background-color,color,border-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current motion-reduce:transition-none',
     icon && 'gap-3',

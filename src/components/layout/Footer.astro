@@ -1,15 +1,16 @@
 ---
 import Logo from '../ui/Logo.astro';
 import Icon from '../ui/Icon.astro';
+import SocialLinks from '../ui/SocialLinks.astro';
 import { navigation, site } from '../../data/site';
 ---
 
 <footer class="bg-ink px-6 pt-14 pb-6 text-white sm:px-10">
   <div class="mx-auto max-w-[1120px]">
-    <div class="grid gap-10 pb-12 sm:grid-cols-[1.2fr_0.8fr_1fr] sm:gap-12">
+    <div class="grid gap-10 pb-12 sm:grid-cols-2 sm:gap-12 lg:grid-cols-[1.2fr_0.8fr_1fr_1fr]">
       <div>
         <a
-          href="#home"
+          href="/"
           aria-label="Zinduka Hub home"
           class="inline-block rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
         >
@@ -17,7 +18,7 @@ import { navigation, site } from '../../data/site';
         </a>
         <p class="mt-5 max-w-[250px] text-sm leading-7 text-white/70">
           Promoting talent, innovation, and an entrepreneurial culture among the
-          youth.
+          youth by giving them a platform to showcase their work.
         </p>
       </div>
       <div>
@@ -41,7 +42,7 @@ import { navigation, site } from '../../data/site';
           Get in touch
         </p>
         <a
-          href="#contact"
+          href="/#contact"
           class="flex w-fit items-center gap-3 text-sm text-white/75 hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
         >
           <Icon name="email" size={17} />
@@ -52,10 +53,14 @@ import { navigation, site } from '../../data/site';
           Chuka University, Kenya
         </p>
       </div>
+      <div>
+        <p class="mb-5 font-ui text-sm font-medium text-white/80">Follow us</p>
+        <SocialLinks tone="light" />
+      </div>
     </div>
     <div class="flex flex-col justify-between gap-3 border-t border-white/10 pt-6 text-[11px] text-white/60 sm:flex-row">
       <p>© {new Date().getFullYear()} Zinduka Hub.</p>
-      <p>Talent. Innovation. Entrepreneurship.</p>
+      <p>Create. Exhibit. Enterprise.</p>
     </div>
   </div>
 </footer>

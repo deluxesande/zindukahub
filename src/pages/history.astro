@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import PageHero from '../components/sections/PageHero.astro';
+import EditionCard from '../components/ui/EditionCard.astro';
+import Button from '../components/ui/Button.astro';
+import { historyIntro, editionsNewestFirst } from '../data/history';
+---
+
+<Layout
+  title="Our history — Zinduka Hub"
+  description="Eleven editions of Zinduka Hub — a decade of creating space for young ideas to grow at Chuka University."
+>
+  <Header />
+  <main id="main">
+    <PageHero
+      eyebrow="Our story"
+      title="Eleven editions"
+      intro={historyIntro}
+    />
+
+    <section class="bg-paper px-6 pb-16 sm:px-10 sm:pb-20">
+      <div class="mx-auto max-w-[1120px]">
+        <div class="space-y-2">
+          {editionsNewestFirst.map((edition) => (
+            <EditionCard edition={edition} featured={edition.edition === 11} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-brand px-6 py-16 text-white sm:px-10 sm:py-20">
+      <div class="mx-auto flex max-w-[1120px] flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
+        <div>
+          <h2 class="max-w-lg font-heading text-[32px] leading-tight font-normal tracking-[-0.03em] sm:text-[42px]">
+            The story continues with 11.0
+          </h2>
+          <p class="mt-4 max-w-lg text-base leading-8 text-white/80">
+            See what the current edition is building and where you can join in.
+          </p>
+        </div>
+        <Button href="/zinduka-11" variant="white" icon="arrowRight">
+          Explore Zinduka 11.0
+        </Button>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
