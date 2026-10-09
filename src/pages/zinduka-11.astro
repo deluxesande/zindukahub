@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import PageHero from '../components/sections/PageHero.astro';
+import TrackCard from '../components/ui/TrackCard.astro';
+import PosterSlot from '../components/ui/PosterSlot.astro';
+import Button from '../components/ui/Button.astro';
+import { site } from '../data/site';
+import { zinduka11 } from '../data/zinduka11';
+---
+
+<Layout
+  title="Zinduka 11.0 — CREATE. EXHIBIT. ENTERPRISE"
+  description="Zinduka Hub 11.0 brings creatives, innovators, exhibitors and entrepreneurs a platform to showcase what they have built — and welcomes partners who want to support our initiatives."
+>
+  <Header />
+  <main id="main">
+    <PageHero
+      eyebrow={`Zinduka ${zinduka11.edition} — Current edition`}
+      title={zinduka11.theme}
+      intro={zinduka11.tagline}
+    />
+
+    <section class="bg-paper px-6 pb-16 sm:px-10 sm:pb-20 lg:pb-24">
+      <div class="mx-auto max-w-[1120px]">
+        <p class="max-w-2xl text-base leading-8 font-medium text-ink/70">
+          {zinduka11.intro}
+        </p>
+        <h2 class="mt-12 font-heading text-[34px] leading-tight font-normal tracking-[-0.03em] text-ink sm:text-[44px]">
+          Who it&rsquo;s for
+        </h2>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {zinduka11.tracks.map((track) => (
+            <TrackCard track={track} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-brand px-6 py-16 text-white sm:px-10 sm:py-20">
+      <div class="mx-auto grid max-w-[1120px] gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        <div>
+          <h2 class="max-w-xl font-heading text-[34px] leading-tight font-normal tracking-[-0.03em] sm:text-[44px]">
+            {zinduka11.partnerCall.title}
+          </h2>
+          <p class="mt-5 max-w-xl text-base leading-8 text-white/80">
+            {zinduka11.partnerCall.body}
+          </p>
+        </div>
+        <div class="lg:justify-self-end">
+          <Button href={site.partnerHref} variant="white" icon="email">
+            Email us to partner
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-paper px-6 py-16 sm:px-10 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-[1120px]">
+        <h2 class="font-heading text-[34px] leading-tight font-normal tracking-[-0.03em] text-ink sm:text-[44px]">
+          Call to action
+        </h2>
+        <p class="mt-4 max-w-2xl text-base leading-8 font-medium text-ink/70">
+          Posters inviting creatives, innovators, entrepreneurs and partners to
+          join Zinduka 11.0.
+        </p>
+        <ul class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {zinduka11.callsToAction.map((item) => (
+            <li>
+              <PosterSlot
+                poster={item.poster}
+                alt={`${item.label} poster`}
+                label={item.label}
+                class="rounded-md"
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

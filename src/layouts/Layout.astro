@@ -7,6 +7,15 @@ import '@fontsource/poppins/latin-500.css';
 import '@fontsource/raleway/latin-400.css';
 import '@fontsource/raleway/latin-500.css';
 import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Zinduka Hub — A space for young ideas to grow',
+  description = site.description,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -14,15 +23,12 @@ import { site } from '../data/site';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={site.description} />
+    <meta name="description" content={description} />
     <meta name="theme-color" content="#940d11" />
-    <meta
-      property="og:title"
-      content="Zinduka Hub — A space for young ideas to grow"
-    />
-    <meta property="og:description" content={site.description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <title>Zinduka Hub — A space for young ideas to grow</title>
+    <title>{title}</title>
   </head>
   <body class="m-0 bg-paper font-body text-ink antialiased selection:bg-brand selection:text-white">
     <a

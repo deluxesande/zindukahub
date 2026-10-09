@@ -1,0 +1,33 @@
+---
+import Button from '../ui/Button.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import { zinduka11 } from '../../data/zinduka11';
+---
+
+<section
+  id="zinduka-11"
+  aria-labelledby="zinduka-11-heading"
+  class="scroll-mt-6 bg-brand px-6 py-16 text-white sm:px-10 sm:py-20 lg:py-24"
+>
+  <div class="mx-auto max-w-[1120px]">
+    <div class="mb-10 grid items-end gap-6 md:grid-cols-2 md:gap-16">
+      <SectionHeading id="zinduka-11-heading">
+        Zinduka {zinduka11.edition}
+      </SectionHeading>
+      <p class="max-w-md text-base leading-8 font-medium text-white/80 md:pb-2">
+        {zinduka11.intro}
+      </p>
+    </div>
+    <p class="font-heading text-[28px] leading-tight font-normal tracking-[-0.03em] text-[#e9d9d6] sm:text-[36px]">
+      {zinduka11.theme}
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <Button href="/zinduka-11" variant="white" icon="arrowRight">
+        Explore Zinduka {zinduka11.edition}
+      </Button>
+      <Button href="/events" variant="outlineLight">
+        See events
+      </Button>
+    </div>
+  </div>
+</section>

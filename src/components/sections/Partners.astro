@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeading from '../ui/SectionHeading.astro';
+import { partners } from '../../data/partners';
+---
+
+<section
+  id="partners"
+  aria-labelledby="partners-heading"
+  class="scroll-mt-6 bg-paper px-6 py-16 sm:px-10 sm:py-20 lg:py-24"
+>
+  <div class="mx-auto max-w-[1120px]">
+    <div class="mb-10 grid items-end gap-6 md:grid-cols-2 md:gap-16">
+      <SectionHeading id="partners-heading">Our partners</SectionHeading>
+      <p class="max-w-md text-base leading-8 font-medium text-ink/70 md:pb-2">
+        The organisations and supporters who make our work possible.
+      </p>
+    </div>
+    <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      {partners.map((partner) => {
+        const body = partner.logo ? (
+          <Image
+            src={partner.logo}
+            alt={partner.name}
+            widths={[160, 320]}
+            sizes="180px"
+            width={200}
+            class="max-h-14 w-auto grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+          />
+        ) : (
+          <span class="text-center font-ui text-xs font-medium tracking-[0.12em] text-ink/40 uppercase">
+            {partner.name}
+          </span>
+        );
+
+        return (
+          <li class="group flex min-h-28 items-center justify-center rounded-md border border-ink/10 bg-white p-5">
+            {partner.href ? (
+              <a
+                href={partner.href}
+                target="_blank"
+                rel="noopener"
+                class="flex items-center justify-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+              >
+                {body}
+              </a>
+            ) : (
+              body
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
