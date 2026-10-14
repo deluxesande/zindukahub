@@ -7,16 +7,16 @@ import { partners } from '../../data/partners';
 <section
   id="partners"
   aria-labelledby="partners-heading"
-  class="scroll-mt-6 bg-paper px-6 py-16 sm:px-10 sm:py-20 lg:py-24"
+  class="scroll-mt-6 bg-white px-6 py-16 sm:px-10 sm:py-20 lg:py-24"
 >
-  <div class="mx-auto max-w-[1120px]">
-    <div class="mb-10 grid items-end gap-6 md:grid-cols-2 md:gap-16">
+  <div class="mx-auto max-w-page">
+    <div class="mb-10 grid items-start gap-6 md:grid-cols-2 md:gap-16">
       <SectionHeading id="partners-heading">Our partners</SectionHeading>
-      <p class="max-w-md text-base leading-8 font-medium text-ink/70 md:pb-2">
+      <p class="max-w-prose text-base leading-8 font-medium text-ink/70 md:pt-3">
         The organisations and supporters who make our work possible.
       </p>
     </div>
-    <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+    <ul class="flex flex-wrap gap-4">
       {partners.map((partner) => {
         const body = (
           <Image
@@ -30,7 +30,7 @@ import { partners } from '../../data/partners';
         );
 
         return (
-          <li class="group flex min-h-28 items-center justify-center rounded-md border border-ink/10 bg-white p-5">
+          <li class="group flex min-h-28 w-full max-w-56 flex-1 items-center justify-center rounded-md border border-ink/10 bg-paper p-5 sm:w-auto sm:min-w-44 sm:flex-none">
             {partner.href ? (
               <a
                 href={partner.href}

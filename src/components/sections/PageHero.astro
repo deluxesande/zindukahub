@@ -1,18 +1,11 @@
 ---
 interface Props {
   id?: string;
-  eyebrow?: string;
   title: string;
   intro?: string;
   class?: string;
 }
-const {
-  id = 'page-heading',
-  eyebrow,
-  title,
-  intro,
-  class: className,
-} = Astro.props;
+const { id = 'page-heading', title, intro, class: className } = Astro.props;
 ---
 
 <section
@@ -22,20 +15,12 @@ const {
     className,
   ]}
 >
-  <div class="mx-auto max-w-[1120px]">
-    {eyebrow && (
-      <p class="font-ui text-[11px] font-medium tracking-[0.22em] text-brand uppercase">
-        {eyebrow}
-      </p>
-    )}
-    <h1
-      id={id}
-      class="mt-4 max-w-3xl font-heading text-[42px] leading-[1.05] font-normal tracking-[-0.04em] text-brand sm:text-[60px] lg:text-[72px]"
-    >
+  <div class="mx-auto max-w-page">
+    <h1 id={id} class="max-w-3xl heading-display text-brand">
       {title}
     </h1>
     {intro && (
-      <p class="mt-5 max-w-2xl text-base leading-8 font-medium text-ink/70">
+      <p class="mt-5 max-w-prose text-base leading-8 font-medium text-ink/70">
         {intro}
       </p>
     )}

@@ -13,33 +13,33 @@ interface Props {
 }
 const { area } = Astro.props;
 const treatments = {
-  talent: 'bg-[#e9d9d6] text-brand',
+  talent: 'bg-tint text-brand',
   innovation: 'bg-brand text-white',
-  leadership: 'bg-[#d8ceca] text-brand',
-  entrepreneurship: 'bg-[#c98785] text-ink',
+  leadership: 'bg-tint-mid text-brand',
+  entrepreneurship: 'bg-tint-deep text-ink',
 };
 const artwork = {
   talent: {
     field:
       '-bottom-36 -left-12 h-64 w-[125%] -rotate-12 rounded-[50%] bg-brand',
-    loop: 'right-5 bottom-7 h-48 w-40 rotate-[24deg] border-[#c98785]',
+    loop: 'right-5 bottom-7 h-48 w-40 rotate-[24deg] border-tint-deep',
     stroke: '-right-8 bottom-6 w-56 -rotate-12 border-paper/80',
   },
   innovation: {
-    field: '-right-12 -bottom-28 h-80 w-80 rounded-full bg-[#c98785]',
-    loop: 'left-8 -bottom-24 h-64 w-48 -rotate-[32deg] border-[#e9d9d6]/65',
+    field: '-right-12 -bottom-28 h-80 w-80 rounded-full bg-tint-deep',
+    loop: 'left-8 -bottom-24 h-64 w-48 -rotate-[32deg] border-tint/65',
     stroke: '-right-4 bottom-5 w-64 -rotate-12 border-paper/80',
   },
   leadership: {
     field:
-      '-bottom-36 -left-12 h-72 w-[125%] rotate-12 rounded-[50%] bg-[#211c1c]',
+      '-bottom-36 -left-12 h-72 w-[125%] rotate-12 rounded-[50%] bg-ink',
     loop: 'right-9 bottom-6 h-52 w-36 rotate-[25deg] border-brand/70',
-    stroke: '-left-6 bottom-8 w-64 rotate-12 border-[#c98785]',
+    stroke: '-left-6 bottom-8 w-64 rotate-12 border-tint-deep',
   },
   entrepreneurship: {
     field:
       '-bottom-36 -left-16 h-72 w-[130%] -rotate-12 rounded-[50%] bg-brand',
-    loop: 'right-10 -bottom-8 h-64 w-44 -rotate-[28deg] border-[#e9d9d6]/80',
+    loop: 'right-10 -bottom-8 h-64 w-44 -rotate-[28deg] border-tint/80',
     stroke: '-right-5 bottom-7 w-64 -rotate-12 border-paper/80',
   },
 };
@@ -71,9 +71,7 @@ const photo = photos[area.treatment];
       art.loop,
     ]}
   ></div>
-  <h3 class="relative z-10 font-heading text-[29px] leading-[1.1] font-normal tracking-[-0.035em] sm:text-[35px]">
-    {area.title}
-  </h3>
+  <h3 class="relative z-10 heading-2">{area.title}</h3>
   <Image
     src={photo.src}
     alt=""
