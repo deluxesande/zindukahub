@@ -1,8 +1,9 @@
 import type { ImageMetadata } from 'astro';
-import editionHero from '../assets/images/Hero.png';
-import galleryStage from '../assets/images/IMG_9264.png';
-import galleryTeam from '../assets/images/IMG_6682.png';
+import editionHero from '../assets/images/history-current-edition.png';
 import galleryFloor from '../assets/images/DSC_0639.png';
+import galleryOne from '../assets/images/zinduka-1.jpeg';
+import galleryTwo from '../assets/images/zinduka-2.jpg';
+import galleryThree from '../assets/images/zinduka-3.jpg';
 import callCreatives from '../assets/call to action/2.png';
 import callInnovators from '../assets/call to action/3.png';
 import callEntrepreneurs from '../assets/call to action/4.png';
@@ -85,20 +86,20 @@ export const editions: Edition[] = [
     ],
     gallery: [
       {
-        image: galleryStage,
-        alt: 'Two Zinduka Hub members talking at an edition showcase',
+        image: galleryThree,
+        alt: 'The Zinduka Hub team at a past edition',
       },
       {
-        image: galleryTeam,
-        alt: 'The Zinduka Hub organising team together at an edition',
+        image: galleryOne,
+        alt: 'Zinduka Hub members together at an edition talk day',
+      },
+      {
+        image: galleryTwo,
+        alt: 'Zinduka Hub members posing together on campus',
       },
       {
         image: galleryFloor,
         alt: 'Members of the Zinduka Hub community on the showcase floor',
-      },
-      {
-        image: editionHero,
-        alt: 'The Zinduka Hub community together at the edition',
       },
     ],
   },
