@@ -1,0 +1,43 @@
+---
+interface Crumb {
+  label: string;
+  /** Omit on the current page. */
+  href?: string;
+}
+interface Props {
+  trail: Crumb[];
+}
+const { trail } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb">
+  <ol class="flex flex-wrap items-center gap-2 font-ui text-xs text-ink/50">
+    <li>
+      <a
+        href="/"
+        class="transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none"
+      >
+        Home
+      </a>
+    </li>
+    {trail.map((crumb) => (
+      <li class="flex items-center gap-2">
+        <span aria-hidden="true" class="text-ink/25">
+          /
+        </span>
+        {crumb.href ? (
+          <a
+            href={crumb.href}
+            class="transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none"
+          >
+            {crumb.label}
+          </a>
+        ) : (
+          <span aria-current="page" class="text-ink/70">
+            {crumb.label}
+          </span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

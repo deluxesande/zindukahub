@@ -2,12 +2,12 @@
 import Logo from '../ui/Logo.astro';
 import Icon from '../ui/Icon.astro';
 import SocialLinks from '../ui/SocialLinks.astro';
-import { navigation, site } from '../../data/site';
+import { footerNav, site } from '../../data/site';
 ---
 
-<footer class="bg-ink px-6 pt-14 pb-6 text-white sm:px-10">
-  <div class="mx-auto max-w-[1120px]">
-    <div class="grid gap-10 pb-12 sm:grid-cols-2 sm:gap-12 lg:grid-cols-[1.2fr_0.8fr_1fr_1fr]">
+<footer class="bg-ink px-6 pt-16 pb-8 text-white sm:px-10">
+  <div class="mx-auto max-w-page">
+    <div class="grid gap-12 pb-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr] lg:gap-10">
       <div>
         <a
           href="/"
@@ -16,50 +16,62 @@ import { navigation, site } from '../../data/site';
         >
           <Logo inverted class="w-16" />
         </a>
-        <p class="mt-5 max-w-[250px] text-sm leading-7 text-white/70">
+        <p class="mt-5 max-w-[280px] text-sm leading-7 text-white/70">
           Promoting talent, innovation, and an entrepreneurial culture among the
           youth by giving them a platform to showcase their work.
         </p>
       </div>
-      <div>
-        <p class="mb-5 font-ui text-sm font-medium text-white/80">Explore</p>
-        <nav
-          aria-label="Footer navigation"
-          class="flex flex-col items-start gap-3"
-        >
-          {navigation.map((item) => (
-            <a
-              href={item.href}
-              class="text-sm text-white/75 hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-            >
-              {item.label}
-            </a>
-          ))}
+
+      {footerNav.map((group) => (
+        <nav aria-label={group.title}>
+          <h2 class="mb-5 font-ui text-sm font-medium text-white">
+            {group.title}
+          </h2>
+          <ul class="flex flex-col items-start gap-3">
+            {group.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </nav>
-      </div>
+      ))}
+
       <div>
-        <p class="mb-5 font-ui text-sm font-medium text-white/80">
+        <h2 class="mb-5 font-ui text-sm font-medium text-white">
           Get in touch
-        </p>
-        <a
-          href="/#contact"
-          class="flex w-fit items-center gap-3 text-sm text-white/75 hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-        >
-          <Icon name="email" size={17} />
-          {site.email}
-        </a>
-        <p class="mt-4 flex items-center gap-3 text-sm text-white/70">
-          <Icon name="location" size={17} />
-          Chuka University, Kenya
-        </p>
-      </div>
-      <div>
-        <p class="mb-5 font-ui text-sm font-medium text-white/80">Follow us</p>
-        <SocialLinks tone="light" />
+        </h2>
+        <ul class="flex flex-col items-start gap-3 text-sm">
+          <li>
+            <a
+              href={`mailto:${site.email}`}
+              class="flex items-center gap-3 text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
+            >
+              <Icon name="email" size={17} />
+              {site.email}
+            </a>
+          </li>
+          <li class="flex items-center gap-3 text-white/70">
+            <Icon name="location" size={17} />
+            Chuka University, Kenya
+          </li>
+        </ul>
+        <div class="mt-6">
+          <SocialLinks tone="light" />
+        </div>
       </div>
     </div>
-    <div class="flex flex-col justify-between gap-3 border-t border-white/10 pt-6 text-[11px] text-white/60 sm:flex-row">
-      <p>© {new Date().getFullYear()} Zinduka Hub.</p>
+
+    <div class="flex flex-col justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/60 sm:flex-row">
+      <p>
+        © {new Date().getFullYear()} Zinduka Hub. Powered by AIESEC in Chuka
+        University.
+      </p>
       <p>Create. Exhibit. Enterprise.</p>
     </div>
   </div>
