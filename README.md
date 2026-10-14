@@ -1,71 +1,48 @@
+<p align="center">
+  <img src="src/assets/logos/zinduka%20MAROON.png" alt="Zinduka Hub" width="160">
+</p>
+
 # Zinduka Hub
 
-A responsive, partner-focused website built with Astro, Tailwind CSS, and Reicon. Use **Bun** for all package and project commands.
+**Promote talent, innovation and entrepreneurial culture among the youth.**
 
-## Development
+Zinduka Hub is a programme of AIESEC in Chuka University. It exists for one reason: young people build things, and most of them never get a room to show that work in. Zinduka Hub is that room. Creatives, innovators, exhibitors and entrepreneurs bring what they have made, an audience turns up to see it, and partners who can fund, mentor or host meet the people worth backing.
 
-```sh
-bun install
-bun run dev --background
-bun run astro dev status
-bun run astro dev logs
-bun run astro dev stop
-```
+Eleven editions in, the shape is simple. A talk day brings the community together. A showcase floor puts the work in front of people, with the makers standing beside it rather than a panel describing it. After that, a selected cohort stays on for months of coaching.
 
-> Astro 7 requires Node.js `>=22.12.0`. If your default `node` is older, run the
-> Astro and Prettier binaries through Bun, e.g.
-> `bun node_modules/.bin/astro dev` and `bun node_modules/.bin/astro build`.
+## Zinduka 11.0
 
-## Production
+The current edition runs under the theme **CREATE. EXHIBIT. ENTERPRISE**, and it is organised around four open calls rather than a single programme. Each one names who it is for in plain terms, because the most common reason a student stays away is assuming the event is not meant for them.
 
-```sh
-bun run build
-bun run preview
-bun run check
-bun run format:check
-```
+| Open call         | For                                                                           |
+| ----------------- | ----------------------------------------------------------------------------- |
+| **Creatives**     | Makers, artists and storytellers with original work to present                |
+| **Innovators**    | Problem-solvers with concepts to put in front of people who can grow them     |
+| **Exhibitors**    | Anyone with a product, project or craft people should experience up close     |
+| **Entrepreneurs** | Founders and business builders sharpening a pitch and looking for connections |
 
-## Pages
+A rapper, a software developer, a trader at the market and a sponsor organisation are all invited to the same floor. The theme is the instruction: create something, exhibit it, and treat it as an enterprise rather than a hobby.
 
-- `/` — homepage: hero, who we are, focus, Zinduka 11.0 band, partnerships, partners, contact.
-- `/events` — upcoming and past events. Each event links out to its own booking page on our external events platform.
-- `/history` — the eleven Zinduka Hub editions, newest first, with 11.0 highlighted.
-- `/zinduka-11` — the current edition: theme **CREATE. EXHIBIT. ENTERPRISE**, the four tracks, the partner call, and call-to-action posters.
+## The cohort
 
-## Organization
+The showcase is one day. The work that follows it is months. When the talk day closes, a selected group stays on for a coached programme, run by people who have built the thing being taught:
 
-- `src/components/layout`: shared header and footer
-- `src/components/sections`: homepage and standalone page sections
-- `src/components/ui`: reusable buttons, icons, logo, headings, cards, and social links
-- `src/data/site.ts`: contact details, navigation, social links, and focus areas
-- `src/data/events.ts`: event listings (title, date, venue, track, booking URL, poster)
-- `src/data/history.ts`: the eleven editions
-- `src/data/zinduka11.ts`: Zinduka 11.0 theme, tracks, partner call, and CTA posters
-- `src/data/partners.ts`: partner names and logos
-- `src/assets`: supplied brand logos, photography, event posters, and CTA artwork
-- `src/styles/global.css`: Tailwind import and brand theme tokens
+- **Brand and audience development** — a brand people recognise, and channels you can run without burning out
+- **Sales, pitching and negotiation** — pricing your work honestly and asking for the room, the client or the cheque
+- **Running a venture after campus** — registration, money in and money out, and surviving the first year out
+- **Contracts and commercial terms** — what you are actually signing: ownership, payment terms, the quiet clauses
 
-Fraunces titles, Poppins controls, and Raleway body text are served locally. Icons come from the installed `reicon-agent` package and render at build time. The WhatsApp glyph is a single hardcoded brand SVG in `src/components/ui/WhatsAppIcon.astro`, since Reicon does not ship brand logos. Photos are monochrome with their original colour revealed on hover. Image derivatives are optimized by Astro; supplied source assets remain unchanged.
+Places are limited. The waitlist is on the [Zinduka 11.0 page](https://www.zindukahub.co.ke/zinduka-11).
 
-## Editing content
+## Partner with us
 
-Content is drafted from the supplied brand guide and confirmed partner information without invented events, testimonials, programs, or impact figures. Everything you need to update lives in `src/data`:
+We are looking for partners willing to back these initiatives, with funding, mentorship, space or expertise. Partnership is a conversation, not a form letter: tell us what you can bring and we will tell you where it lands. Start one through the contact form on [zindukahub.co.ke](https://www.zindukahub.co.ke), or write to info@zindukahub.co.ke.
 
-- **Events** (`events.ts`): event title, date, time, venue, track, status, poster, and the `bookingUrl` to the event's page on our Zenlipa events platform.
-- **History** (`history.ts`): the editions shown on `/history`, newest first.
-- **Zinduka 11.0** (`zinduka11.ts`): the theme, tracks, partner call, and CTA posters.
-- **Partners** (`partners.ts`): partner names and logos.
-- **Social links** (`site.ts`): the WhatsApp group and Instagram links, plus contact details.
+## This repository
 
-### Adding artwork
+The Zinduka Hub website, built with Astro, Tailwind CSS and Bun. Two documents cover the rest:
 
-Drop image files into the matching folder under `src/assets/` and import them at the top of the relevant data file:
+- [`DESIGN.md`](DESIGN.md) — the design system: brand, tokens, typography, imagery, motion, and the patterns that are banned on sight
+- [`ARCHITECTURE.md`](ARCHITECTURE.md) — project structure, local commands, and how to edit content and add artwork
 
-- Event posters → `src/assets/events/`
-- History edition artwork → `src/assets/history/`
-- Partner logos → `src/assets/logos/`
-- Zinduka 11.0 CTA posters → `src/assets/call to action/`
-
-## Getting in touch
-
-There is no on-site form. Partners get in touch by email using the `mailto:` link in `src/data/site.ts` (`partnerHref`).
+Zinduka Hub is a programme of AIESEC in Chuka University.
