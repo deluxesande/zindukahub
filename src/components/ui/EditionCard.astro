@@ -1,74 +1,55 @@
 ---
 import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
 import type { Edition } from '../../data/history';
 
 interface Props {
   edition: Edition;
-  featured?: boolean;
 }
-const { edition, featured = false } = Astro.props;
+const { edition } = Astro.props;
 ---
 
-<article
-  class:list={[
-    'grid gap-4 md:grid-cols-[190px_1fr] md:gap-10',
-    featured
-      ? 'rounded-md bg-brand px-6 py-8 text-white sm:px-8'
-      : 'border-t border-ink/10 py-8',
-  ]}
->
-  <div>
-    <p
-      class:list={[
-        'font-heading text-[34px] leading-none tracking-[-0.03em]',
-        featured ? 'text-white' : 'text-brand',
-      ]}
-    >
-      Zinduka {edition.edition}.0
-    </p>
-    <p
-      class:list={[
-        'mt-3 font-ui text-[10px] font-medium tracking-[0.18em] uppercase',
-        featured ? 'text-white/70' : 'text-ink/45',
-      ]}
-    >
-      {edition.year}
-    </p>
-  </div>
-  <div>
-    <p
-      class:list={[
-        'font-ui text-[11px] font-medium tracking-[0.18em] uppercase',
-        featured ? 'text-white/80' : 'text-brand',
-      ]}
-    >
+{/*
+  The featured card. Only ever one on the page, so it can afford the image.
+  The image is ratio-capped rather than free-flowing: a tall source photo was
+  previously rendering a screen-and-a-half of card on its own.
+*/}
+<article class="overflow-hidden rounded-md bg-brand text-white md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:items-stretch">
+  <div class="flex flex-col justify-center p-8 sm:p-10 lg:p-12">
+    <p class="font-ui text-sm font-medium text-white/70">{edition.year}</p>
+    <h3 class="heading-1 mt-3">
+      <a
+        href={`/history/${edition.slug}`}
+        class="transition-colors hover:text-white/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
+      >
+        {edition.title}
+      </a>
+    </h3>
+    <p class="mt-4 font-ui text-sm leading-7 font-medium text-white/80">
       {edition.theme}
     </p>
-    <h3
-      class:list={[
-        'mt-2 font-heading text-[26px] leading-tight tracking-[-0.03em]',
-        featured ? 'text-white' : 'text-ink',
-      ]}
-    >
-      {edition.title}
-    </h3>
-    <p
-      class:list={[
-        'mt-3 max-w-2xl text-sm leading-7',
-        featured ? 'text-white/80' : 'text-ink/70',
-      ]}
-    >
+    <p class="mt-4 max-w-prose text-sm leading-7 text-white/75">
       {edition.description}
     </p>
-    {edition.image && (
+    <a
+      href={`/history/${edition.slug}`}
+      class="mt-7 inline-flex w-fit items-center gap-3 font-ui text-sm font-medium text-white underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+    >
+      Explore this edition
+      <Icon name="arrowRight" size={17} />
+    </a>
+  </div>
+
+  {edition.image && (
+    <div class="group relative min-h-64 md:min-h-full">
       <Image
         src={edition.image}
         alt={`${edition.title} artwork`}
-        widths={[600, 900, 1200]}
-        sizes="(max-width: 767px) 90vw, 60vw"
-        width={1000}
-        class="mt-5 w-full rounded-md"
+        widths={[600, 900, 1400]}
+        sizes="(max-width: 767px) 100vw, 50vw"
+        width={1200}
+        class="absolute inset-0 h-full w-full object-cover object-top grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
       />
-    )}
-  </div>
+    </div>
+  )}
 </article>
