@@ -1,0 +1,120 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  /** Line beside the button, saying who the waitlist is for. */
+  note: string;
+  class?: string;
+}
+const { note, class: className } = Astro.props;
+
+// The waitlist has its own Web3Forms key so cohort signups land separately
+// from general enquiries. Keys are public by design: they are submitted from
+// the visitor's browser and deliver to the address registered with the key.
+const accessKey = '74413d7b-32fd-4d5c-9d01-a549516ecde0';
+---
+
+<div
+  data-waitlist
+  class:list={[
+    'rounded-md bg-ink px-8 py-12 text-white sm:px-12 sm:py-14',
+    className,
+  ]}
+>
+  <div class="grid items-center gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+    <div>
+      <h3 class="heading-2">Join the cohort waitlist</h3>
+      <p class="mt-4 max-w-prose text-base leading-8 text-white/70">{note}</p>
+    </div>
+
+    <div class="w-full">
+      <div class="flex lg:justify-end">
+        <button
+          type="button"
+          data-waitlist-toggle
+          aria-expanded="false"
+          aria-controls="waitlist-panel"
+          class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-9 py-4 font-ui text-xs font-medium text-brand transition-[background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-paper active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
+        >
+          <span>Join the waitlist</span>
+          <Icon name="arrowRight" size={18} />
+        </button>
+      </div>
+
+      <div
+        id="waitlist-panel"
+        data-waitlist-panel
+        hidden
+        class="grid -translate-y-3 grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none data-[open]:translate-y-0 data-[open]:grid-rows-[1fr] data-[open]:opacity-100"
+      >
+        <div class="overflow-hidden px-1 pt-1">
+          <form
+            id="waitlist-form"
+            method="post"
+            action="https://api.web3forms.com/submit"
+            class="pt-8"
+          >
+            <input type="hidden" name="access_key" value={accessKey} />
+            <input
+              type="hidden"
+              name="subject"
+              value="New Zinduka 11.0 cohort waitlist signup"
+            />
+            <input type="hidden" name="from_name" value="Zinduka Hub website" />
+            <input
+              type="checkbox"
+              name="botcheck"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+              class="hidden"
+            />
+
+            <div class="flex flex-col gap-4 sm:flex-row">
+              <label for="waitlist-email" class="sr-only">
+                Email address
+              </label>
+              <input
+                id="waitlist-email"
+                name="email"
+                type="email"
+                required
+                maxlength={254}
+                autocomplete="email"
+                placeholder="you@example.com"
+                class="min-h-14 w-full rounded-full border border-white/35 bg-white/5 px-7 py-4 text-base text-white transition-colors duration-150 placeholder:text-white/40 focus:border-white focus:bg-white/10 focus:outline-2 focus:outline-offset-2 focus:outline-white motion-reduce:transition-none"
+              />
+              <button
+                type="submit"
+                class="min-h-14 shrink-0 rounded-full bg-white px-9 py-4 font-ui text-xs font-medium text-brand transition-[background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-paper active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white disabled:cursor-wait disabled:opacity-60 motion-reduce:transition-none"
+              >
+                <span data-submit-label>Send</span>
+              </button>
+            </div>
+
+            <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+              <p
+                id="waitlist-status"
+                role="status"
+                aria-live="polite"
+                class="text-sm leading-7 text-white/70 empty:hidden"
+              ></p>
+              <button
+                type="button"
+                data-waitlist-cancel
+                class="font-ui text-xs font-medium text-white/50 underline underline-offset-4 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
+              >
+                Not now
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import '../../scripts/waitlist';
+  import '../../scripts/waitlist-form';
+</script>

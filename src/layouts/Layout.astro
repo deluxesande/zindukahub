@@ -1,21 +1,78 @@
 ---
 import '../styles/global.css';
-import '@fontsource-variable/fraunces';
-import '@fontsource-variable/fraunces/wght-italic.css';
-import '@fontsource/poppins/latin-400.css';
-import '@fontsource/poppins/latin-500.css';
-import '@fontsource/raleway/latin-400.css';
-import '@fontsource/raleway/latin-500.css';
-import { site } from '../data/site';
+import '@fontsource-variable/literata';
+import '@fontsource-variable/literata/wght-italic.css';
+import '@fontsource-variable/archivo';
+import { site, org, social, emails } from '../data/site';
 
 interface Props {
   title?: string;
   description?: string;
+  /** Extra JSON-LD for this page, merged into the graph. */
+  schema?: Record<string, unknown>[];
 }
 const {
-  title = 'Zinduka Hub — A space for young ideas to grow',
+  title = 'Zinduka Hub | A space for young ideas to grow',
   description = site.description,
+  schema = [],
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(org.ogImage, Astro.site).href;
+
+// Organization and WebSite describe the whole site, so they ride on every
+// page. Pages add their own nodes through the `schema` prop.
+const graph = [
+  {
+    '@type': 'Organization',
+    '@id': `${org.url}/#organization`,
+    name: org.name,
+    url: org.url,
+    logo: new URL(org.logo, Astro.site).href,
+    image: ogImage,
+    description: site.description,
+    slogan: org.tagline,
+    foundingDate: org.foundingDate,
+    email: site.email,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'general enquiries',
+      email: emails.general,
+    },
+    parentOrganization: {
+      '@type': 'Organization',
+      name: org.parentOrganization,
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: org.address.locality,
+      addressRegion: org.address.region,
+      addressCountry: org.address.country,
+    },
+    location: { '@type': 'Place', name: org.address.institution },
+    sameAs: [social.instagram.href],
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${org.url}/#website`,
+    name: org.name,
+    url: org.url,
+    description: site.description,
+    inLanguage: 'en',
+    publisher: { '@id': `${org.url}/#organization` },
+  },
+  {
+    '@type': 'WebPage',
+    '@id': `${canonical}#webpage`,
+    url: canonical,
+    name: title,
+    description,
+    isPartOf: { '@id': `${org.url}/#website` },
+    about: { '@id': `${org.url}/#organization` },
+  },
+  ...schema,
+];
+const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
 ---
 
 <!doctype html>
@@ -23,12 +80,47 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta
+      name="google-site-verification"
+      content="ujjm7fGBCIfYsPx_C0LU7jbBKNjibj-J7hC2rZiBXxE"
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1"
+    />
     <meta name="theme-color" content="#940d11" />
+    <meta name="author" content={org.name} />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={org.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <title>{title}</title>
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${org.name} logo`} />
+    <meta property="og:locale" content="en_KE" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(jsonLd)}
+    />
   </head>
   <body class="m-0 bg-paper font-body text-ink antialiased selection:bg-brand selection:text-white">
     <a

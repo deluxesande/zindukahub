@@ -1,0 +1,25 @@
+---
+import type { Edition } from '../../data/history';
+
+interface Props {
+  edition: Edition;
+}
+const { edition } = Astro.props;
+---
+
+{/*
+  The index row. Deliberately compact and image-free: the history page has to
+  stay scannable at twenty editions, not just at two, so past editions are an
+  index you skim rather than a stack of cards you scroll.
+*/}
+<a
+  href={`/history/${edition.slug}`}
+  class="group grid h-full grid-cols-[auto_1fr] items-baseline gap-x-5 gap-y-1 rounded-md border border-ink/10 bg-white px-6 py-5 transition-colors hover:border-brand/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none"
+>
+  <span class="heading-3 tabular-nums text-brand" aria-hidden="true">
+    {edition.edition}.0
+  </span>
+  <span class="font-ui text-sm font-medium text-ink">{edition.title}</span>
+  <span class="font-ui text-xs text-ink/45">{edition.year}</span>
+  <span class="text-sm leading-6 text-ink/60">{edition.theme}</span>
+</a>

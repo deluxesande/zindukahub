@@ -4,7 +4,76 @@
   --color-brand: #940d11;
   --color-ink: #211c1c;
   --color-paper: #f8f5f2;
-  --font-heading: 'Fraunces Variable', Georgia, serif;
-  --font-ui: 'Poppins', sans-serif;
-  --font-body: 'Raleway', sans-serif;
+
+  /* Warm tints on the red-to-neutral axis. These were hand-written as raw hex
+     in a dozen places; tokens make them greppable and keep markup honest. */
+  --color-tint: #e9d9d6;
+  --color-tint-mid: #d8ceca;
+  --color-tint-deep: #c98785;
+
+  /* Literata carries display and headings: a reading serif with institutional
+     weight, warm without tipping into the editorial-italic cliche.
+     Archivo carries UI and body: a grotesque drawn for signage and print, so
+     it stays legible at label sizes and reads corporate, not startup. */
+  --font-heading: 'Literata Variable', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Archivo Variable', system-ui, sans-serif;
+  --font-body: 'Archivo Variable', system-ui, sans-serif;
+
+  /* Fluid display ramp, ~1.25 between steps, each clamp bounded so the max is
+     under 2.5x the min. Replaces the ad-hoc text-[44px] values. */
+  /* One page container. 1120 left too much air on a laptop; 1320 fills the
+     viewport while prose keeps its own 65ch cap via max-w-prose. */
+  --container-page: 1320px;
+
+  --text-display: clamp(2.75rem, 1.9rem + 4vw, 4.5rem); /* 44 -> 72 */
+  --text-h2: clamp(2rem, 1.6rem + 2vw, 3.5rem); /* 32 -> 56 */
+  --text-h3: clamp(1.5rem, 1.3rem + 1vw, 2.5rem); /* 24 -> 40 */
+  --text-h4: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem); /* 20 -> 24 */
+}
+
+/* The heading recipe was hand-duplicated in 20+ places, so a scale or tracking
+   change meant hunting every occurrence. These four are the single source.
+   Colour stays in the markup, since it changes with the section's ground. */
+@utility heading-display {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: var(--text-display);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+@utility heading-1 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+@utility heading-2 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: var(--text-h3);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+@utility heading-3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: var(--text-h4);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+/* A long word in a narrow column must hyphenate, never spill past the box. */
+.heading-display,
+.heading-1,
+.heading-2,
+.heading-3 {
+  overflow-wrap: break-word;
+  hyphens: auto;
 }

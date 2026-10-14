@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import Button from './Button.astro';
 import PosterSlot from './PosterSlot.astro';
 import type { EventItem } from '../../data/events';
 
@@ -20,18 +21,21 @@ const isUpcoming = event.status === 'upcoming';
   <div class="flex flex-col gap-4 p-6 sm:p-8">
     <div class="flex flex-wrap items-center gap-3">
       {event.track && (
-        <span class="rounded-full bg-brand/10 px-3 py-1 font-ui text-[10px] font-medium tracking-[0.14em] text-brand uppercase">
+        <span class="font-ui text-xs font-medium text-brand">
           {event.track}
         </span>
       )}
       {!isUpcoming && (
-        <span class="font-ui text-[10px] font-medium tracking-[0.14em] text-ink/45 uppercase">
-          Past event
-        </span>
+        <span class="font-ui text-xs font-medium text-ink/45">Past event</span>
       )}
     </div>
-    <h3 class="font-heading text-[28px] leading-[1.1] font-normal tracking-[-0.03em] text-ink">
-      {event.title}
+    <h3 class="heading-2 text-ink">
+      <a
+        href={`/events/${event.slug}`}
+        class="transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none"
+      >
+        {event.title}
+      </a>
     </h3>
     <ul class="space-y-2 text-sm text-ink/70">
       <li class="flex items-center gap-3">
@@ -48,15 +52,14 @@ const isUpcoming = event.status === 'upcoming';
     </ul>
     <p class="text-sm leading-7 text-ink/70">{event.description}</p>
     {isUpcoming && (
-      <a
+      <Button
         href={event.bookingUrl}
-        target="_blank"
-        rel="noopener"
-        class="mt-2 inline-flex min-h-12 w-fit items-center justify-center gap-3 rounded-full bg-brand px-7 py-3 font-ui text-xs font-medium text-white transition-[background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:bg-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none"
+        icon="arrowRight"
+        external
+        class="mt-2 w-fit"
       >
         Book on our events platform
-        <Icon name="arrowRight" size={18} />
-      </a>
+      </Button>
     )}
   </div>
 </article>

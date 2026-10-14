@@ -2,34 +2,159 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import PageHero from '../components/sections/PageHero.astro';
+import { Image } from 'astro:assets';
+import heroPhoto from '../assets/images/Hero.png';
+import exhibitPhoto from '../assets/images/IMG_9264.png';
+import crowdPhoto from '../assets/images/DSC_0639.png';
+import sessionPhoto from '../assets/images/IMG_6682.png';
 import TrackCard from '../components/ui/TrackCard.astro';
 import PosterSlot from '../components/ui/PosterSlot.astro';
 import Button from '../components/ui/Button.astro';
-import { site } from '../data/site';
+import Icon from '../components/ui/Icon.astro';
+import WaitlistForm from '../components/ui/WaitlistForm.astro';
+import BrandVisual from '../components/visuals/BrandVisual.astro';
+import SalesVisual from '../components/visuals/SalesVisual.astro';
+import VentureVisual from '../components/visuals/VentureVisual.astro';
+import ContractVisual from '../components/visuals/ContractVisual.astro';
+import { site, org } from '../data/site';
 import { zinduka11 } from '../data/zinduka11';
+
+// The theme is three words with hard stops, so set it as three lines and let
+// it carry the hero the way the posters do.
+const themeLines = zinduka11.theme
+  .split('.')
+  .map((w) => w.trim())
+  .filter(Boolean);
+
+// One visual per cohort module, keyed by the module's own key.
+const cohortVisuals = {
+  branding: BrandVisual,
+  selling: SalesVisual,
+  business: VentureVisual,
+  legal: ContractVisual,
+};
+
+const schema = [
+  {
+    '@type': 'CreativeWork',
+    name: `Zinduka Hub ${zinduka11.edition}.0`,
+    headline: zinduka11.theme,
+    description: zinduka11.intro,
+    creator: { '@id': `${org.url}/#organization` },
+    about: zinduka11.tracks.map((track) => track.title),
+  },
+];
 ---
 
 <Layout
-  title="Zinduka 11.0 — CREATE. EXHIBIT. ENTERPRISE"
-  description="Zinduka Hub 11.0 brings creatives, innovators, exhibitors and entrepreneurs a platform to showcase what they have built — and welcomes partners who want to support our initiatives."
+  title="Zinduka 11.0 | CREATE. EXHIBIT. ENTERPRISE"
+  description="Zinduka Hub 11.0 brings creatives, innovators, exhibitors and entrepreneurs a platform to showcase what they have built, and welcomes partners who want to support our initiatives."
+  schema={schema}
 >
   <Header />
   <main id="main">
-    <PageHero
-      eyebrow={`Zinduka ${zinduka11.edition} — Current edition`}
-      title={zinduka11.theme}
-      intro={zinduka11.tagline}
-    />
+    <section
+      aria-labelledby="edition-heading"
+      class="bg-paper px-6 pt-32 pb-16 sm:px-10 sm:pt-36 sm:pb-20 lg:pb-24"
+    >
+      <div class="mx-auto grid max-w-page items-end gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-14">
+        <div class="lg:pb-10">
+          <h1
+            id="edition-heading"
+            class="flex flex-col heading-display text-brand"
+          >
+            {themeLines.map((line) => (
+              <span>{line}.</span>
+            ))}
+          </h1>
+          <p class="mt-6 heading-2 text-ink">Zinduka {zinduka11.edition}</p>
+          <p class="mt-5 max-w-prose font-body text-base leading-8 font-medium text-ink/70">
+            {zinduka11.tagline}
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <Button href={site.partnerHref} variant="brand" icon="arrowRight">
+              Partner with us
+            </Button>
+            <Button href="/events" variant="outline">
+              See events
+            </Button>
+          </div>
+        </div>
 
-    <section class="bg-paper px-6 pb-16 sm:px-10 sm:pb-20 lg:pb-24">
-      <div class="mx-auto max-w-[1120px]">
-        <p class="max-w-2xl text-base leading-8 font-medium text-ink/70">
-          {zinduka11.intro}
-        </p>
-        <h2 class="mt-12 font-heading text-[34px] leading-tight font-normal tracking-[-0.03em] text-ink sm:text-[44px]">
-          Who it&rsquo;s for
-        </h2>
+        <div class="group grid grid-cols-5 items-end gap-3 sm:gap-4">
+          <div class="col-span-3">
+            <Image
+              src={heroPhoto}
+              alt="The Zinduka Hub community together at a past edition"
+              widths={[600, 900, 1200]}
+              sizes="(max-width: 1023px) 55vw, 30vw"
+              width={1200}
+              quality={85}
+              loading="eager"
+              fetchpriority="high"
+              class="aspect-[4/5] w-full object-cover grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+            />
+          </div>
+          <div class="col-span-2 flex flex-col gap-3 sm:gap-4">
+            <Image
+              src={exhibitPhoto}
+              alt="An exhibitor presenting work at Zinduka Hub"
+              widths={[400, 700, 1000]}
+              sizes="(max-width: 1023px) 36vw, 20vw"
+              width={1000}
+              quality={85}
+              loading="eager"
+              class="aspect-square w-full object-cover grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+            />
+            <Image
+              src={crowdPhoto}
+              alt="Students at a Zinduka Hub session"
+              widths={[400, 700, 1000]}
+              sizes="(max-width: 1023px) 36vw, 20vw"
+              width={1000}
+              quality={85}
+              class="aspect-[3/4] w-full object-cover grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      aria-labelledby="edition-about-heading"
+      class="bg-ink px-6 py-16 text-white sm:px-10 sm:py-20 lg:py-24"
+    >
+      <div class="mx-auto max-w-page">
+        <div class="grid items-start gap-10 md:grid-cols-2 md:gap-16">
+          <div>
+            <h2 id="edition-about-heading" class="heading-1">
+              What this edition is
+            </h2>
+            <p class="mt-5 max-w-prose heading-2 text-tint">
+              {zinduka11.editionLead}
+            </p>
+          </div>
+          <p class="max-w-prose text-base leading-8 font-medium text-white/75 md:pt-3">
+            {zinduka11.editionBody}
+          </p>
+        </div>
+        <div class="group mt-12 sm:mt-16">
+          <Image
+            src={sessionPhoto}
+            alt="Zinduka Hub members at work during a past edition"
+            widths={[900, 1400, 2000]}
+            sizes="(max-width: 1320px) 100vw, 1320px"
+            width={2000}
+            quality={85}
+            class="aspect-[21/9] w-full object-cover grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-paper px-6 py-16 sm:px-10 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-page">
+        <h2 class="heading-1 text-ink">Who it&rsquo;s for</h2>
         <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {zinduka11.tracks.map((track) => (
             <TrackCard track={track} />
@@ -38,12 +163,66 @@ import { zinduka11 } from '../data/zinduka11';
       </div>
     </section>
 
-    <section class="bg-brand px-6 py-16 text-white sm:px-10 sm:py-20">
-      <div class="mx-auto grid max-w-[1120px] gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-        <div>
-          <h2 class="max-w-xl font-heading text-[34px] leading-tight font-normal tracking-[-0.03em] sm:text-[44px]">
-            {zinduka11.partnerCall.title}
+    <section
+      aria-labelledby="cohort-heading"
+      class="bg-white px-6 py-16 sm:px-10 sm:py-20 lg:py-24"
+    >
+      <div class="mx-auto max-w-page">
+        <div class="mx-auto max-w-4xl text-center">
+          <h2 id="cohort-heading" class="heading-1 text-ink">
+            {zinduka11.cohort.title}
           </h2>
+          <p class="mx-auto mt-5 max-w-3xl heading-2 text-brand">
+            {zinduka11.cohort.lead}
+          </p>
+          <p class="mx-auto mt-6 max-w-prose text-base leading-8 font-medium text-ink/70">
+            {zinduka11.cohort.body}
+          </p>
+        </div>
+
+        <ul class="mt-16 space-y-16 sm:mt-20 sm:space-y-20 lg:space-y-24">
+          {zinduka11.cohort.modules.map((module, index) => {
+            const Visual =
+              cohortVisuals[module.key as keyof typeof cohortVisuals];
+            return (
+              <li class="grid items-center gap-8 lg:grid-cols-2 lg:gap-20">
+                <div class:list={[index % 2 === 1 && 'lg:order-2']}>
+                  <Visual />
+                </div>
+
+                <div class={index % 2 === 1 ? 'lg:order-1' : undefined}>
+                  <h3 class="heading-2 text-ink">{module.title}</h3>
+                  <p class="mt-5 max-w-prose text-base leading-8 text-ink/70">
+                    {module.copy}
+                  </p>
+                  {module.points && (
+                    <ul class="mt-6 space-y-3">
+                      {module.points.map((point) => (
+                        <li class="flex items-start gap-3 text-sm leading-7 text-ink/70">
+                          <Icon
+                            name="check"
+                            size={18}
+                            class="mt-1 shrink-0 text-brand"
+                          />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+
+        <WaitlistForm note={zinduka11.cohort.note} class="mt-16 sm:mt-20" />
+      </div>
+    </section>
+
+    <section class="bg-brand px-6 py-16 text-white sm:px-10 sm:py-20">
+      <div class="mx-auto grid max-w-page gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        <div>
+          <h2 class="heading-1">{zinduka11.partnerCall.title}</h2>
           <p class="mt-5 max-w-xl text-base leading-8 text-white/80">
             {zinduka11.partnerCall.body}
           </p>
@@ -57,11 +236,9 @@ import { zinduka11 } from '../data/zinduka11';
     </section>
 
     <section class="bg-paper px-6 py-16 sm:px-10 sm:py-20 lg:py-24">
-      <div class="mx-auto max-w-[1120px]">
-        <h2 class="font-heading text-[34px] leading-tight font-normal tracking-[-0.03em] text-ink sm:text-[44px]">
-          Call to action
-        </h2>
-        <p class="mt-4 max-w-2xl text-base leading-8 font-medium text-ink/70">
+      <div class="mx-auto max-w-page">
+        <h2 class="heading-1 text-ink">Call to action</h2>
+        <p class="mt-4 max-w-prose text-base leading-8 font-medium text-ink/70">
           Posters inviting creatives, innovators, entrepreneurs and partners to
           join Zinduka 11.0.
         </p>

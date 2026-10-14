@@ -5,26 +5,53 @@ import Footer from '../components/layout/Footer.astro';
 import PageHero from '../components/sections/PageHero.astro';
 import EventCard from '../components/ui/EventCard.astro';
 import Button from '../components/ui/Button.astro';
-import { upcomingEvents, pastEvents } from '../data/events';
+import { upcomingEvents, pastEvents, events } from '../data/events';
+import { org } from '../data/site';
+
+// One Event node per listed event, so search and answer engines can surface
+// dates, venues and booking links directly.
+const schema = events.map((event) => ({
+  '@type': 'Event',
+  name: event.title,
+  startDate: event.startDate,
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  description: event.description,
+  url: event.bookingUrl,
+  location: {
+    '@type': 'Place',
+    name: event.location,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: org.address.locality,
+      addressRegion: org.address.region,
+      addressCountry: org.address.country,
+    },
+  },
+  organizer: { '@id': `${org.url}/#organization` },
+  offers: {
+    '@type': 'Offer',
+    url: event.bookingUrl,
+    availability: 'https://schema.org/InStock',
+  },
+}));
 ---
 
 <Layout
-  title="Events — Zinduka Hub"
+  title="Events | Zinduka Hub"
   description="See what’s coming up at Zinduka Hub and book your place through our events platform."
+  schema={schema}
 >
   <Header />
   <main id="main">
     <PageHero
-      eyebrow="What’s on"
       title="Events"
       intro="Showcases, exhibitions and meet-ups for creatives, innovators, exhibitors and entrepreneurs. Pick an event and book your place on our events platform."
     />
 
     <section class="bg-paper px-6 pb-16 sm:px-10 sm:pb-20">
-      <div class="mx-auto max-w-[1120px]">
-        <h2 class="font-heading text-[34px] leading-tight font-normal tracking-[-0.03em] text-ink sm:text-[40px]">
-          Upcoming events
-        </h2>
+      <div class="mx-auto max-w-page">
+        <h2 class="heading-1 text-ink">Upcoming events</h2>
         <div class="mt-8 space-y-6">
           {upcomingEvents.map((event) => (
             <EventCard event={event} />
@@ -35,11 +62,9 @@ import { upcomingEvents, pastEvents } from '../data/events';
 
     {pastEvents.length > 0 && (
       <section class="bg-paper px-6 pb-16 sm:px-10 sm:pb-20">
-        <div class="mx-auto max-w-[1120px]">
+        <div class="mx-auto max-w-page">
           <div class="border-t border-ink/10 pt-12">
-            <h2 class="font-heading text-[34px] leading-tight font-normal tracking-[-0.03em] text-ink sm:text-[40px]">
-              Past events
-            </h2>
+            <h2 class="heading-1 text-ink">Past events</h2>
             <div class="mt-8 space-y-6">
               {pastEvents.map((event) => (
                 <EventCard event={event} />
@@ -51,11 +76,9 @@ import { upcomingEvents, pastEvents } from '../data/events';
     )}
 
     <section class="bg-brand px-6 py-16 text-white sm:px-10 sm:py-20">
-      <div class="mx-auto flex max-w-[1120px] flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
+      <div class="mx-auto flex max-w-page flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
         <div>
-          <h2 class="max-w-lg font-heading text-[32px] leading-tight font-normal tracking-[-0.03em] sm:text-[42px]">
-            Curious what this season is about?
-          </h2>
+          <h2 class="heading-1">Curious what this season is about?</h2>
           <p class="mt-4 max-w-lg text-base leading-8 text-white/80">
             Zinduka 11.0 carries the theme CREATE. EXHIBIT. ENTERPRISE.
           </p>

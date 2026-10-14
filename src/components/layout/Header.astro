@@ -12,7 +12,7 @@ const isActive = (href: string) =>
   !href.startsWith('/#') && normalize(href) === currentPath;
 ---
 
-<header class="absolute inset-x-0 top-4 z-30 mx-auto max-w-7xl px-4 sm:top-6 sm:px-8">
+<header class="absolute inset-x-0 top-4 z-30 mx-auto max-w-page px-4 sm:top-6 sm:px-8">
   <div class="relative flex min-h-20 items-center justify-between gap-6 rounded-xl border border-black/5 bg-white px-5 py-3 shadow-sm shadow-black/[0.02] lg:px-8">
     <a
       href="/"
@@ -23,7 +23,7 @@ const isActive = (href: string) =>
     </a>
     <nav
       aria-label="Main navigation"
-      class="hidden items-center gap-6 xl:gap-8 lg:flex"
+      class="hidden items-center gap-8 lg:flex xl:gap-10"
     >
       {navigation.map((item) => {
         const active = isActive(item.href);
@@ -32,8 +32,12 @@ const isActive = (href: string) =>
             href={item.href}
             aria-current={active ? 'page' : undefined}
             class:list={[
-              'py-3 font-ui text-[11px] font-medium transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand',
-              active ? 'text-brand' : 'text-ink/75',
+              'py-3 font-ui text-sm transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand',
+              item.featured
+                ? 'font-semibold text-brand underline decoration-2 underline-offset-8'
+                : active
+                  ? 'font-medium text-brand'
+                  : 'font-medium text-ink/75',
             ]}
           >
             {item.label}
@@ -69,7 +73,11 @@ const isActive = (href: string) =>
             aria-current={active ? 'page' : undefined}
             class:list={[
               'block rounded-lg px-3 py-3 font-ui text-sm hover:bg-paper focus-visible:outline-2 focus-visible:outline-brand',
-              active ? 'text-brand' : 'text-ink',
+              item.featured
+                ? 'font-semibold text-brand underline decoration-2 underline-offset-4'
+                : active
+                  ? 'text-brand'
+                  : 'text-ink',
             ]}
           >
             {item.label}
@@ -82,6 +90,7 @@ const isActive = (href: string) =>
     </nav>
   </div>
 </header>
+
 <script>
   const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
   const menu = document.querySelector<HTMLElement>('#mobile-navigation');

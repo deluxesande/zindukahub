@@ -1,0 +1,90 @@
+---
+import Icon from '../ui/Icon.astro';
+
+const panel =
+  'relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-md border border-ink/10 bg-paper p-8 sm:p-10';
+const card = 'w-full max-w-sm rounded-md border border-ink/10 bg-white p-6';
+---
+
+<div class={panel} aria-hidden="true">
+  <div class={card}>
+    <div class="flex items-center gap-3">
+      <span class="flex size-10 items-center justify-center rounded-full bg-brand/10 text-brand">
+        <Icon name="briefcase" size={18} />
+      </span>
+      <p class="font-ui text-xs font-medium text-ink">The month, in order</p>
+    </div>
+    <ul class="mt-5 space-y-2 font-ui text-xs">
+      <li class="row flex items-center justify-between gap-3 rounded-sm px-3 py-3">
+        <span class="text-ink/70">Client invoice</span>
+        <span class="stamp font-medium text-brand">Paid</span>
+      </li>
+      <li class="row flex items-center justify-between gap-3 rounded-sm px-3 py-3">
+        <span class="text-ink/70">Registration</span>
+        <span class="stamp font-medium text-brand">Filed</span>
+      </li>
+      <li class="row flex items-center justify-between gap-3 rounded-sm px-3 py-3">
+        <span class="text-ink/70">Set aside for tax</span>
+        <span class="stamp font-medium text-brand">Done</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .row {
+    animation: sweep 4s ease-in-out infinite;
+  }
+  .row:nth-child(2) {
+    animation-delay: 1.1s;
+  }
+  .row:nth-child(3) {
+    animation-delay: 2.2s;
+  }
+  .row:nth-child(2) .stamp {
+    animation-delay: 1.1s;
+  }
+  .row:nth-child(3) .stamp {
+    animation-delay: 2.2s;
+  }
+  .stamp {
+    animation: stamp 4s ease-in-out infinite;
+  }
+
+  @keyframes sweep {
+    0%,
+    100% {
+      background-color: transparent;
+      transform: translateX(0);
+    }
+    15%,
+    35% {
+      background-color: color-mix(in srgb, var(--color-brand) 12%, transparent);
+      transform: translateX(6px);
+    }
+  }
+
+  @keyframes stamp {
+    0%,
+    10% {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    25%,
+    80% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .row,
+    .stamp {
+      animation: none;
+    }
+  }
+</style>

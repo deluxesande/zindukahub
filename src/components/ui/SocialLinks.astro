@@ -17,6 +17,7 @@ const linkClass =
 <div class:list={['flex flex-col items-start gap-3', className]}>
   <a
     href={social.whatsapp.href}
+    aria-label={social.whatsapp.label}
     target="_blank"
     rel="noopener"
     class:list={[
@@ -25,10 +26,11 @@ const linkClass =
     ]}
   >
     <WhatsAppIcon size={18} />
-    {social.whatsapp.label}
+    {social.whatsapp.handle}
   </a>
   <a
     href={social.instagram.href}
+    aria-label={social.instagram.label}
     target="_blank"
     rel="noopener"
     class:list={[
@@ -37,6 +39,6 @@ const linkClass =
     ]}
   >
     <Icon name="instagram" size={18} />
-    {social.instagram.label}
+    {social.instagram.handle}
   </a>
 </div>

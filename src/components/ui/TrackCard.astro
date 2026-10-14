@@ -12,8 +12,6 @@ const { track } = Astro.props;
   <span class="flex size-11 items-center justify-center rounded-full bg-brand/10 text-brand">
     <Icon name={track.icon} size={22} />
   </span>
-  <h3 class="font-heading text-[26px] leading-tight font-normal tracking-[-0.03em] text-ink">
-    {track.title}
-  </h3>
+  <h3 class="heading-3 text-ink">{track.title}</h3>
   <p class="text-sm leading-7 text-ink/70">{track.copy}</p>
 </article>

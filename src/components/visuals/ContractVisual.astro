@@ -1,0 +1,81 @@
+---
+import Icon from '../ui/Icon.astro';
+
+const panel =
+  'relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-md border border-ink/10 bg-paper p-8 sm:p-10';
+const card = 'w-full max-w-sm rounded-md border border-ink/10 bg-white p-6';
+---
+
+<div class={panel} aria-hidden="true">
+  <div class={card}>
+    <div class="flex items-center justify-between">
+      <p class="font-ui text-xs font-medium text-ink">Service agreement</p>
+      <span class="text-brand/70">
+        <Icon name="scale" size={20} />
+      </span>
+    </div>
+    <ul class="mt-5 space-y-2 font-ui text-xs text-ink/70">
+      <li class="clause rounded-sm px-3 py-2">Scope of work</li>
+      <li class="clause rounded-sm px-3 py-2">Payment terms</li>
+      <li class="clause rounded-sm px-3 py-2">Who owns the work</li>
+      <li class="clause rounded-sm px-3 py-2">How either side exits</li>
+    </ul>
+    <div class="mt-5 flex items-center gap-3 border-t border-ink/10 pt-5">
+      <span class="ping text-brand">
+        <Icon name="check" size={18} />
+      </span>
+      <p class="font-ui text-xs text-ink/60">Read before you sign</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .clause {
+    animation: travel 4.4s ease-in-out infinite;
+  }
+  .clause:nth-child(2) {
+    animation-delay: 1.1s;
+  }
+  .clause:nth-child(3) {
+    animation-delay: 2.2s;
+  }
+  .clause:nth-child(4) {
+    animation-delay: 3.3s;
+  }
+  .ping {
+    display: inline-flex;
+    animation: ping 3s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  }
+
+  @keyframes travel {
+    0%,
+    100% {
+      background-color: transparent;
+      color: color-mix(in srgb, var(--color-ink) 70%, transparent);
+    }
+    12%,
+    28% {
+      background-color: var(--color-tint);
+      color: var(--color-ink);
+    }
+  }
+
+  @keyframes ping {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    40% {
+      transform: scale(1.25);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .clause,
+    .ping {
+      animation: none;
+    }
+  }
+</style>

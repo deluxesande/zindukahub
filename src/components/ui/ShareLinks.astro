@@ -1,0 +1,64 @@
+---
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  /** Absolute URL of the page being shared. */
+  url: string;
+  /** Text that leads the shared message. */
+  text: string;
+  tone?: 'dark' | 'light';
+}
+const { url, text, tone = 'dark' } = Astro.props;
+
+const whatsapp = `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`;
+const mail = `mailto:?subject=${encodeURIComponent(text)}&body=${encodeURIComponent(`${text}\n\n${url}`)}`;
+
+const base =
+  'inline-flex min-h-11 items-center gap-2 rounded-md border px-4 py-2 font-ui text-xs font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none';
+const tones = {
+  dark: 'border-ink/15 text-ink/70 hover:border-brand/40 hover:text-brand focus-visible:outline-brand',
+  light:
+    'border-white/25 text-white/80 hover:border-white hover:text-white focus-visible:outline-white',
+};
+const linkClass = `${base} ${tones[tone]}`;
+---
+
+<div class="flex flex-wrap items-center gap-3">
+  <a href={whatsapp} target="_blank" rel="noopener" class={linkClass}>
+    <WhatsAppIcon size={16} />
+    Share on WhatsApp
+  </a>
+  <a href={mail} class={linkClass}>
+    <Icon name="email" size={16} />
+    Share by email
+  </a>
+  <button
+    type="button"
+    data-copy-link={url}
+    class={`${linkClass} cursor-pointer`}
+  >
+    <Icon name="arrowRight" size={16} />
+    <span data-copy-label>Copy link</span>
+  </button>
+</div>
+
+<script>
+  document
+    .querySelectorAll<HTMLButtonElement>('[data-copy-link]')
+    .forEach((button) => {
+      const label = button.querySelector<HTMLElement>('[data-copy-label]');
+      button.addEventListener('click', async () => {
+        if (!label) return;
+        try {
+          await navigator.clipboard.writeText(button.dataset.copyLink ?? '');
+          label.textContent = 'Link copied';
+        } catch {
+          label.textContent = 'Press Ctrl+C to copy';
+        }
+        setTimeout(() => {
+          label.textContent = 'Copy link';
+        }, 2500);
+      });
+    });
+</script>
