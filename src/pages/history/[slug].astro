@@ -107,14 +107,18 @@ const schema = [
           </div>
 
           {edition.image && (
-            <div class="group">
+            // The edition photo is a cutout with its subject in the lower
+            // third of the frame, built for a colour ground rather than an
+            // edge-to-edge crop. A flat photo box left most of it reading as
+            // empty space, so it sits on a brand panel instead.
+            <div class="group relative aspect-[4/5] overflow-hidden rounded-md bg-brand">
               <Image
                 src={edition.image}
                 alt={`${edition.title} artwork`}
                 widths={[600, 900, 1400]}
                 sizes="(max-width: 767px) 90vw, 46vw"
                 width={1200}
-                class="aspect-[4/5] h-full w-full rounded-md object-cover grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+                class="absolute inset-0 h-full w-full object-cover object-bottom grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
               />
             </div>
           )}

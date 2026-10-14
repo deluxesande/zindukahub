@@ -75,6 +75,11 @@ grayscale transition-[filter] duration-200 motion-reduce:transition-none
 
 Always use Astro's `<Image>` with explicit `widths`, `sizes`, and `width`. Decorative images take `alt=""`. The hero image takes `loading="eager"` and `fetchpriority="high"`; everything else lazy-loads by default.
 
+Two deliberate exceptions:
+
+- **Documentary photos that are about colour stay in colour.** The showcase-stand photo on `/zinduka-11` exists to show the AIESEC branding on it, so it skips the grayscale treatment entirely rather than hiding its own point until hover.
+- **Cutout portraits sit on a colour ground, never a flat crop.** `talent.png`, `innovation.png`, `leadership.png` and `history-current-edition.png` are transparent PNGs with the subject in the lower third of the frame, built for the FocusCard treatment (a colour panel showing through the transparent area). Used anywhere else, they need the same two things: a `bg-brand` (or tint) panel behind them, and `object-bottom` rather than the default centre, or the crop shows the empty top of the frame instead of the person.
+
 ### Motion
 
 150ms for interaction, 200ms for filters. Easing is `cubic-bezier(0.23,1,0.32,1)`. Pressable things take `active:scale-[0.97]`. Every transition carries `motion-reduce:transition-none`, and the page is `scroll-smooth motion-reduce:scroll-auto`.
