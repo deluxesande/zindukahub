@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import hero from '../../assets/images/Hero.png';
+import hero from '../../assets/images/history-current-edition.png';
 import Button from '../ui/Button.astro';
 import { site } from '../../data/site';
 ---
@@ -24,17 +24,22 @@ import { site } from '../../data/site';
       Partner with us
     </Button>
   </div>
-  <div class="group mx-auto mt-8 max-w-page overflow-hidden px-3 sm:mt-4 sm:px-10">
+  {/*
+    A cutout with the group in the bottom fifth of a 4:5 frame, so it runs
+    as a band cropped from the bottom. At full height it would be mostly
+    empty paper.
+  */}
+  <div class="group mx-auto mt-10 max-w-page px-3 sm:mt-12 sm:px-10">
     <Image
       src={hero}
-      alt="Members of the Zinduka Hub community"
-      widths={[640, 960, 1280, 1920]}
-      sizes="(max-width: 1120px) 100vw, 1120px"
-      width={1440}
+      alt="The Zinduka Hub community together at a past edition"
+      widths={[900, 1400, 2000]}
+      sizes="(max-width: 1320px) 100vw, 1320px"
+      width={1800}
       quality={85}
       loading="eager"
       fetchpriority="high"
-      class="-mt-[12.7%] block w-full grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+      class="aspect-[16/7] w-full object-cover object-bottom grayscale transition-[filter] duration-200 motion-reduce:transition-none sm:aspect-[16/6] [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
     />
   </div>
 </section>

@@ -1,3 +1,5 @@
+export {};
+
 // Cohort waitlist signups only, posting under the waitlist's own access key.
 const form = document.querySelector<HTMLFormElement>('#waitlist-form');
 

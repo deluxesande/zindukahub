@@ -1,3 +1,5 @@
+export {};
+
 // Contact enquiries only. The waitlist has its own form, key and script so the
 // two submission streams never share a code path.
 const form = document.querySelector<HTMLFormElement>('#contact-form');

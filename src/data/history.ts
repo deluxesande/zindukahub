@@ -1,8 +1,9 @@
 import type { ImageMetadata } from 'astro';
-import editionHero from '../assets/images/Hero.png';
-import galleryStage from '../assets/images/IMG_9264.png';
-import galleryTeam from '../assets/images/IMG_6682.png';
-import galleryFloor from '../assets/images/DSC_0639.png';
+import editionHero from '../assets/images/history-current-edition.png';
+import galleryTeamLinedUp from '../assets/images/IMG_6519.jpg';
+import galleryTwoMembers from '../assets/images/DSC_0809.jpg';
+import galleryDesk from '../assets/images/DSC_0719.jpg';
+import galleryAudienceHall from '../assets/images/IMG_6641.jpg';
 import callCreatives from '../assets/call to action/2.png';
 import callInnovators from '../assets/call to action/3.png';
 import callEntrepreneurs from '../assets/call to action/4.png';
@@ -85,20 +86,20 @@ export const editions: Edition[] = [
     ],
     gallery: [
       {
-        image: galleryStage,
-        alt: 'Two Zinduka Hub members talking at an edition showcase',
+        image: galleryTeamLinedUp,
+        alt: 'Zinduka Hub organizing team members in front of the event backdrop',
       },
       {
-        image: galleryTeam,
-        alt: 'The Zinduka Hub organising team together at an edition',
+        image: galleryTwoMembers,
+        alt: 'Two Zinduka Hub community members sharing a laugh',
       },
       {
-        image: galleryFloor,
-        alt: 'Members of the Zinduka Hub community on the showcase floor',
+        image: galleryDesk,
+        alt: 'Team members at the registration desk in front of the organisation banner',
       },
       {
-        image: editionHero,
-        alt: 'The Zinduka Hub community together at the edition',
+        image: galleryAudienceHall,
+        alt: 'Attendees and community members gathered in the hall for the edition',
       },
     ],
   },

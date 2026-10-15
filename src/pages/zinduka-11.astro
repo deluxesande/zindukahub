@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import { Image } from 'astro:assets';
-import heroPhoto from '../assets/images/Hero.png';
-import exhibitPhoto from '../assets/images/IMG_9264.png';
-import crowdPhoto from '../assets/images/DSC_0639.png';
-import sessionPhoto from '../assets/images/IMG_6682.png';
+import heroPhoto from '../assets/images/zinduka-3.jpg';
+import exhibitPhoto from '../assets/images/zinduka-1.jpeg';
+import crowdPhoto from '../assets/images/zinduka-2.jpg';
+import sessionPhoto from '../assets/images/what-this-edition-is.jpg';
 import TrackCard from '../components/ui/TrackCard.astro';
 import PosterSlot from '../components/ui/PosterSlot.astro';
 import Button from '../components/ui/Button.astro';
@@ -85,7 +85,7 @@ const schema = [
           <div class="col-span-3">
             <Image
               src={heroPhoto}
-              alt="The Zinduka Hub community together at a past edition"
+              alt="The Zinduka Hub team at a past edition"
               widths={[600, 900, 1200]}
               sizes="(max-width: 1023px) 55vw, 30vw"
               width={1200}
@@ -98,7 +98,7 @@ const schema = [
           <div class="col-span-2 flex flex-col gap-3 sm:gap-4">
             <Image
               src={exhibitPhoto}
-              alt="An exhibitor presenting work at Zinduka Hub"
+              alt="Zinduka Hub members at an edition talk day"
               widths={[400, 700, 1000]}
               sizes="(max-width: 1023px) 36vw, 20vw"
               width={1000}
@@ -108,7 +108,7 @@ const schema = [
             />
             <Image
               src={crowdPhoto}
-              alt="Students at a Zinduka Hub session"
+              alt="Zinduka Hub members together at an edition"
               widths={[400, 700, 1000]}
               sizes="(max-width: 1023px) 36vw, 20vw"
               width={1000}
@@ -138,15 +138,20 @@ const schema = [
             {zinduka11.editionBody}
           </p>
         </div>
-        <div class="group mt-12 sm:mt-16">
+        <div class="mt-12 sm:mt-16">
+          {/*
+            Every other photo on the site ships grayscale with a hover
+            return. This one is the exception: the AIESEC branding on the
+            stand is the point of the shot, so it stays in colour.
+          */}
           <Image
             src={sessionPhoto}
-            alt="Zinduka Hub members at work during a past edition"
+            alt="AIESEC in Chuka University members at a Zinduka Hub showcase stand"
             widths={[900, 1400, 2000]}
             sizes="(max-width: 1320px) 100vw, 1320px"
             width={2000}
             quality={85}
-            class="aspect-[21/9] w-full object-cover grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+            class="aspect-[21/9] w-full rounded-md object-cover"
           />
         </div>
       </div>
