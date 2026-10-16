@@ -16,27 +16,27 @@ import { partners } from '../../data/partners';
         The organisations and supporters who make our work possible.
       </p>
     </div>
-    <ul class="flex flex-wrap gap-4">
+    <ul class="flex flex-wrap items-center gap-x-10 gap-y-8 sm:gap-x-14">
       {partners.map((partner) => {
         const body = (
           <Image
             src={partner.logo}
             alt={partner.name}
-            widths={[160, 320]}
-            sizes="180px"
-            width={200}
-            class="max-h-14 w-auto"
+            widths={[240, 480]}
+            sizes="(max-width: 767px) 55vw, 280px"
+            width={240}
+            class={`h-auto w-auto ${partner.size ?? 'max-h-20'}`}
           />
         );
 
         return (
-          <li class="group flex min-h-28 w-full max-w-56 flex-1 items-center justify-center rounded-md border border-ink/10 bg-paper p-5 sm:w-auto sm:min-w-44 sm:flex-none">
+          <li class="flex items-center">
             {partner.href ? (
               <a
                 href={partner.href}
                 target="_blank"
                 rel="noopener"
-                class="flex items-center justify-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                class="flex items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
               >
                 {body}
               </a>
