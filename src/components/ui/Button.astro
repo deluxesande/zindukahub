@@ -6,6 +6,8 @@ interface Props {
   variant?: 'brand' | 'white' | 'outline' | 'outlineLight';
   icon?: IconName;
   class?: string;
+  /** Opens the link in a new tab with `rel="noopener"`. */
+  external?: boolean;
   target?: string;
   rel?: string;
 }
@@ -14,8 +16,9 @@ const {
   variant = 'brand',
   icon,
   class: className,
-  target,
-  rel,
+  external = false,
+  target = external ? '_blank' : undefined,
+  rel = external ? 'noopener' : undefined,
 } = Astro.props;
 const variants = {
   brand: 'bg-brand text-white hover:bg-ink',
