@@ -92,7 +92,7 @@ const schema = [
               quality={85}
               loading="eager"
               fetchpriority="high"
-              class="aspect-[4/5] w-full object-cover grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+              class="aspect-[4/5] w-full object-cover"
             />
           </div>
           <div class="col-span-2 flex flex-col gap-3 sm:gap-4">
@@ -104,7 +104,7 @@ const schema = [
               width={1000}
               quality={85}
               loading="eager"
-              class="aspect-square w-full object-cover grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+              class="aspect-square w-full object-cover"
             />
             <Image
               src={crowdPhoto}
@@ -113,7 +113,7 @@ const schema = [
               sizes="(max-width: 1023px) 36vw, 20vw"
               width={1000}
               quality={85}
-              class="aspect-[3/4] w-full object-cover grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0"
+              class="aspect-[3/4] w-full object-cover"
             />
           </div>
         </div>
@@ -139,11 +139,6 @@ const schema = [
           </p>
         </div>
         <div class="mt-12 sm:mt-16">
-          {/*
-            Every other photo on the site ships grayscale with a hover
-            return. This one is the exception: the AIESEC branding on the
-            stand is the point of the shot, so it stays in colour.
-          */}
           <Image
             src={sessionPhoto}
             alt="AIESEC in Chuka University members at a Zinduka Hub showcase stand"
