@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import PageHero from '../components/sections/PageHero.astro';
+import Button from '../components/ui/Button.astro';
+import { navigation } from '../data/site';
+---
+
+<Layout
+  title="Page not found | Zinduka Hub"
+  description="That page has moved or never existed. Here are the main parts of the site instead."
+>
+  <Header />
+  <main id="main">
+    <PageHero
+      title="That page isn’t here"
+      intro="The link may be old, or the address slightly off. Everything below still works."
+    />
+
+    <section class="bg-paper px-6 pb-16 sm:px-10 sm:pb-20">
+      <div class="mx-auto max-w-page">
+        <ul class="divide-y divide-ink/10 border-t border-ink/10">
+          {navigation.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="group flex items-center justify-between gap-6 py-5 text-lg font-medium text-ink transition-colors hover:text-brand"
+              >
+                {item.label}
+                <span
+                  aria-hidden="true"
+                  class="text-ink/30 transition-transform group-hover:translate-x-1 group-hover:text-brand"
+                >
+                  &rarr;
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-10">
+          <Button href="/" variant="brand" icon="arrowRight">
+            Back to the home page
+          </Button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

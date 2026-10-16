@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  @astrojs/sitemap emits sitemap-index.xml and sitemap-0.xml, which is what
+  robots.txt declares. This file exists only because some crawlers and SEO
+  tools probe /sitemap.xml blindly, so it forwards them to the generated one.
+  ponytail: hardcodes sitemap-0.xml; the integration only splits into
+  sitemap-1.xml and beyond past 45,000 URLs, so revisit if the site ever
+  gets near that.
+-->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.zindukahub.co.ke/sitemap-0.xml</loc>
+  </sitemap>
+</sitemapindex>
