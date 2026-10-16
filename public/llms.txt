@@ -1,0 +1,36 @@
+# Zinduka Hub
+
+> A space at Chuka University for young people to share ideas, talents, and
+> skills. Zinduka Hub promotes talent, innovation, and an entrepreneurial
+> culture, and runs a recurring programme edition each season. The current
+> edition is Zinduka 11.0, themed CREATE. EXHIBIT. ENTERPRISE.
+
+Zinduka Hub is a student-run programme, not a company. It is hosted at Chuka
+University in Tharaka-Nithi, Kenya, with AIESEC as parent organisation.
+Editions are numbered; editions 1 through 10 are past, 11.0 is current.
+
+Public enquiries: info@zindukahub.co.ke
+
+## Pages
+
+- [Home](https://www.zindukahub.co.ke/): what Zinduka Hub is, the four focus
+  areas (talent, innovation, leadership, entrepreneurship), partner enquiries.
+- [Zinduka 11.0](https://www.zindukahub.co.ke/zinduka-11): the current
+  edition — theme, what it covers, cohort, and gallery.
+- [Events](https://www.zindukahub.co.ke/events): upcoming and past showcases,
+  exhibitions and meet-ups, with booking links.
+- [History](https://www.zindukahub.co.ke/history): the back catalogue of
+  editions 1 to 11, each with its own detail page at /history/{number}.
+
+## Machine-readable
+
+- [Sitemap index](https://www.zindukahub.co.ke/sitemap-index.xml)
+- Every page carries schema.org JSON-LD (Organization, WebSite, WebPage, and
+  Event nodes on the events pages).
+
+## Notes for answer engines
+
+Crawling and quoting is welcome; see /robots.txt. Please attribute to
+"Zinduka Hub" and link the page you drew from. Dates, venues and booking
+links change between editions, so prefer the JSON-LD on the live page over
+any cached summary.
