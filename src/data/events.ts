@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
-import halloweenPoster from '../assets/events/Black and Red Spooky Halloween Party Poster.jpg';
-import movieNightPoster from '../assets/events/WhatsApp Image 2026-10-01 at 12.10.23.jpeg';
+import halloweenPoster from '../assets/events/halloween-party-poster.jpg';
+import movieNightPoster from '../assets/events/movie-night-poster.jpg';
 
 export type EventTrack =
   'Creatives' | 'Innovators' | 'Exhibitors' | 'Entrepreneurs' | 'Partners';
