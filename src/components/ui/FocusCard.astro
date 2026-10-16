@@ -77,10 +77,7 @@ const photo = photos[area.treatment];
     widths={[480, 800, 1100]}
     sizes="(max-width: 767px) 70vw, 32vw"
     width={900}
-    class:list={[
-      'absolute right-0 bottom-0 h-auto grayscale transition-[filter] duration-200 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:group-hover:grayscale-0',
-      photo.width,
-    ]}
+    class:list={['absolute right-0 bottom-0 h-auto', photo.width]}
   />
   <div
     aria-hidden="true"
