@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
-import halloweenPoster from '../assets/events/halloween-party-poster.jpg';
-import movieNightPoster from '../assets/events/movie-night-poster.jpg';
+import halloweenPoster from '../assets/events/Black and Red Spooky Halloween Party Poster.jpg';
+import movieNightPoster from '../assets/events/WhatsApp Image 2026-10-01 at 12.10.23.jpeg';
 
 export type EventTrack =
   'Creatives' | 'Innovators' | 'Exhibitors' | 'Entrepreneurs' | 'Partners';
@@ -39,46 +39,48 @@ export interface EventItem {
 export const events: EventItem[] = [
   {
     slug: 'halloween-party',
-    title: 'Halloween Night',
+    title: 'Halloween Party',
     date: 'October 31',
-    startDate: '2026-10-31T21:00:00+03:00',
-    time: '9:00 PM till late',
+    startDate: '2026-10-31T09:00:00+03:00',
+    time: 'Starts 09:00',
     location: 'Origins Club, opposite Space Q',
     track: 'Creatives',
     description:
-      'Dress. Spook. Hang. Come as your favourite character and spend the night with drinks, games, performances, paint, style and rap. Entry 300 KES.',
+      'An art and fashion expo to celebrate the season. Artists, bring your vision; fashionistas, bring your finest collections. Come dressed in character, step into the spotlight and showcase your creativity. Entry 250 KES.',
     about:
-      'Halloween Night is our dress-up edition, and the costume is the point rather than the decoration. Come as anyone you like: anime, movie, TV, superhero, video game, comic, horror, fantasy, historical, or a character you invented yourself. The night runs late at Origins, with drinks, games and performances between the sets, a paint corner for anyone who wants to make something, and style and rap on the floor. Entry is 300 KES and the door stays open till late, so arrive when you can.',
+      'This is our Halloween edition of the showcase, and it runs as a working expo rather than a party with decorations. The floor is split between an art wall and a fashion runway. Painters, illustrators, photographers and digital artists hang and stand beside their work so visitors can ask about it and buy it. Designers and stylists walk their collections in two runs across the night. Costume is the thread that ties the room together: come as a character and the whole room reads as one piece.',
     details: [
-      'A costume floor open to everyone, judged late in the night.',
-      'Performances and a rap set across the evening.',
-      'Drinks and games running all night.',
-      'A paint corner for anyone who wants to make something on the spot.',
-      'Style on the floor, and photography throughout with shots shared to our Instagram afterwards.',
+      'An art wall where exhibiting artists stand with their work and sell directly to visitors.',
+      'Two runway sessions for designers and stylists showing a collection or a single look.',
+      'A costume floor, judged late in the night, open to everyone who turns up in character.',
+      'A DJ set between runway runs, so the room keeps moving while the floor resets.',
+      'Photography throughout, with shots shared to our Instagram afterwards.',
     ],
     schedule: [
-      { time: '21:00', item: 'Doors, drinks and games open' },
-      { time: '22:00', item: 'Performances and rap set' },
-      { time: '23:30', item: 'Paint corner and open floor' },
-      { time: '00:30', item: 'Costume judging and closing' },
+      { time: '09:00', item: 'Doors, art wall opens, exhibitors set up' },
+      { time: '11:00', item: 'First runway run' },
+      { time: '13:00', item: 'Open floor, DJ set, artist conversations' },
+      { time: '16:00', item: 'Second runway run' },
+      { time: '18:00', item: 'Costume judging and closing' },
     ],
     notes: [
-      { label: 'Entry', value: '300 KES per person' },
+      { label: 'Entry', value: '250 KES per person, booked in advance' },
       {
         label: 'Dress code',
+        value: 'Come in character. Costume is encouraged, not required',
+      },
+      {
+        label: 'Exhibiting',
         value:
-          'Come as your favourite character. Anime, movie, TV, superhero, video game, comic, horror, fantasy, historical, or your own original',
+          'Artists and designers should arrive by 08:00 to set up. Bring your own stands or rails where you can',
       },
       {
-        label: 'Tickets',
-        value: 'Scan the QR code on the poster, or book in advance',
-      },
-      {
-        label: 'Info',
-        value: 'WhatsApp or call 0745 767 158 for more details',
+        label: 'Payment',
+        value:
+          'Mobile money on the night for anything bought from an exhibitor',
       },
     ],
-    bookingUrl: 'https://zenlipa.co.ke/events/TBO5Pw',
+    bookingUrl: 'https://zenlipa.co.ke/events/d6kRCv',
     poster: halloweenPoster,
     status: 'upcoming',
   },
