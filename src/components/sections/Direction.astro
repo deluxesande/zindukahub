@@ -1,0 +1,30 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+import { site } from '../../data/site';
+---
+
+<section
+  id="direction"
+  aria-labelledby="direction-heading"
+  class="scroll-mt-6 bg-white px-6 py-16 sm:px-10 sm:py-20 lg:py-24"
+>
+  <div class="mx-auto grid max-w-page items-start gap-6 md:grid-cols-2 md:gap-16">
+    <SectionHeading id="direction-heading">
+      Where we&rsquo;re going
+    </SectionHeading>
+    <div class="max-w-prose md:pt-3">
+      <p class="text-base leading-8 font-medium text-ink/70">
+        Starting in Chuka, we are growing toward a Zinduka Hub in more counties,
+        beginning where talent has the fewest platforms.
+      </p>
+      <p class="mt-4 text-sm leading-7 text-ink/70">
+        If you speak for a community, a school or an organisation in another
+        county and want to bring this space closer to home, get in touch.
+      </p>
+      <Button href={site.partnerHref} class="mt-8">
+        Get in touch
+      </Button>
+    </div>
+  </div>
+</section>

@@ -22,7 +22,7 @@ export const site = {
   // handing the visitor off to their mail client.
   partnerHref: '/#contact',
   description:
-    'A space at Chuka University for young people to share ideas, talents, and skills. Partner with Zinduka Hub to promote talent, innovation, and an entrepreneurial culture.',
+    'Nurturing talent, innovation and entrepreneurship among young Kenyans, starting in Chuka. Partner with Zinduka Hub to give young ideas in underserved communities a platform.',
 };
 
 // Primary navigation: real pages only, so every item is a destination and the
@@ -101,11 +101,9 @@ export const org = {
   logo: '/icon-512.png',
   ogImage: '/og-image.png',
   tagline:
-    'Promote talent, innovation and entrepreneurial culture among the youth.',
+    'Nurturing young talent in underserved counties and communities across Kenya.',
   foundingDate: '2015',
-  parentOrganization: 'AIESEC in Chuka University',
   address: {
-    institution: 'Chuka University',
     locality: 'Chuka',
     region: 'Tharaka Nithi County',
     country: 'KE',

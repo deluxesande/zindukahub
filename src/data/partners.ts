@@ -1,5 +1,5 @@
 import type { ImageMetadata } from 'astro';
-import aiesec from '../assets/logos/powered-by-Blue.png';
+import aiesec from '../assets/logos/aiesec-logo.png';
 import campusReview from '../assets/partners/campus-review.png';
 import dressWithUs from '../assets/partners/dress-with-us.png';
 import foundersLiveChuka from '../assets/partners/founders-live-chuka.png';
@@ -21,7 +21,7 @@ export interface Partner {
 }
 
 export const partners: Partner[] = [
-  // The powered-by lockup is tall and light, so it runs at the default.
+  // A wide mark that sits comfortably at the default height.
   { name: 'AIESEC', logo: aiesec },
   // Thick letterforms: they read heavier than the rest at the same height.
   { name: 'Dress With Us', logo: dressWithUs, size: 'max-h-16' },

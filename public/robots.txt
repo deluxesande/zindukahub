@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Answer engines and AI crawlers are welcome. The site is public information
-# about a student programme; we want it quoted accurately.
+# about a youth programme; we want it quoted accurately.
 User-agent: GPTBot
 Allow: /
 
