@@ -39,17 +39,13 @@ const graph = [
       contactType: 'general enquiries',
       email: emails.general,
     },
-    parentOrganization: {
-      '@type': 'Organization',
-      name: org.parentOrganization,
-    },
     address: {
       '@type': 'PostalAddress',
       addressLocality: org.address.locality,
       addressRegion: org.address.region,
       addressCountry: org.address.country,
     },
-    location: { '@type': 'Place', name: org.address.institution },
+    location: { '@type': 'Place', name: org.address.locality },
     sameAs: [social.instagram.href],
   },
   {

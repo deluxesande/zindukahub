@@ -90,12 +90,12 @@ export const zinduka11 = {
       },
       {
         key: 'business',
-        title: 'Running a venture after campus',
+        title: 'Running a venture in the first year',
         copy: 'The first year out: registration, money in and money out, clients, and keeping the thing alive while life gets expensive.',
         points: [
           'Registration, records and money in order',
           'Clients who come back and pay on time',
-          'A plan for the lean months after campus',
+          'A plan for the lean months',
         ],
         icon: 'briefcase',
       },

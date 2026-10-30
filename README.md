@@ -6,13 +6,13 @@
 
 **Promote talent, innovation and entrepreneurial culture among the youth.**
 
-Zinduka Hub is a programme of AIESEC in Chuka University. It exists for one reason: young people build things, and most of them never get a room to show that work in. Zinduka Hub is that room. Creatives, innovators, exhibitors and entrepreneurs bring what they have made, an audience turns up to see it, and partners who can fund, mentor or host meet the people worth backing.
+Zinduka Hub is a Kenya-wide mission based in Chuka. It began in Chuka with the support of AIESEC in Chuka. It exists for one reason: young people build things, and most of them never get a room to show that work in. Zinduka Hub is that room. Creatives, innovators, exhibitors and entrepreneurs bring what they have made, an audience turns up to see it, and partners who can fund, mentor or host meet the people worth backing.
 
 Eleven editions in, the shape is simple. A talk day brings the community together. A showcase floor puts the work in front of people, with the makers standing beside it rather than a panel describing it. After that, a selected cohort stays on for months of coaching.
 
 ## Zinduka 11.0
 
-The current edition runs under the theme **CREATE. EXHIBIT. ENTERPRISE**, and it is organised around four open calls rather than a single programme. Each one names who it is for in plain terms, because the most common reason a student stays away is assuming the event is not meant for them.
+The current edition runs under the theme **CREATE. EXHIBIT. ENTERPRISE**, and it is organised around four open calls rather than a single programme. Each one names who it is for in plain terms, because the most common reason a young person stays away is assuming the event is not meant for them.
 
 | Open call         | For                                                                           |
 | ----------------- | ----------------------------------------------------------------------------- |
@@ -29,7 +29,7 @@ The showcase is one day. The work that follows it is months. When the talk day c
 
 - **Brand and audience development** — a brand people recognise, and channels you can run without burning out
 - **Sales, pitching and negotiation** — pricing your work honestly and asking for the room, the client or the cheque
-- **Running a venture after campus** — registration, money in and money out, and surviving the first year out
+- **Running a venture in the first year** — registration, money in and money out, and surviving the first year out
 - **Contracts and commercial terms** — what you are actually signing: ownership, payment terms, the quiet clauses
 
 Places are limited. The waitlist is on the [Zinduka 11.0 page](https://www.zindukahub.co.ke/zinduka-11).
@@ -45,4 +45,4 @@ The Zinduka Hub website, built with Astro, Tailwind CSS and Bun. Two documents c
 - [`DESIGN.md`](DESIGN.md) — the design system: brand, tokens, typography, imagery, motion, and the patterns that are banned on sight
 - [`ARCHITECTURE.md`](ARCHITECTURE.md) — project structure, local commands, and how to edit content and add artwork
 
-Zinduka Hub is a programme of AIESEC in Chuka University.
+Zinduka Hub began in Chuka with the support of AIESEC in Chuka.

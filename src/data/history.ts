@@ -35,7 +35,7 @@ export interface Edition {
 }
 
 export const historyIntro =
-  'Zinduka Hub has grown across eleven editions. A decade of creating space for young people to share ideas, talent, and enterprise at Chuka University. Each edition carried its own theme; together they tell the story of the community we are building.';
+  'Zinduka began in Chuka with the support of AIESEC in Chuka. Over eleven editions and a decade, it has grown into a space for young people to share ideas, talent, and enterprise. Each edition carried its own theme; together they tell the story of the community we are building.';
 
 export const editions: Edition[] = [
   {
@@ -48,12 +48,12 @@ export const editions: Edition[] = [
     description:
       'Bringing creatives, innovators, exhibitors and entrepreneurs a platform to showcase what they have built, and welcoming partners who want to support our initiatives.',
     story:
-      'Eleven years in, the edition is organised around four open calls rather than a single programme. Each call names who it is for in plain terms, because the most common reason a student does not take part is assuming the event is not meant for them. A rapper, a software developer, a trader at the market and a sponsor organisation are all being invited to the same floor, and the theme is the instruction: create something, exhibit it, and treat it as an enterprise rather than a hobby.',
+      'Eleven years in, the edition is organised around four open calls rather than a single programme. Each call names who it is for in plain terms, because the most common reason a young person does not take part is assuming the event is not meant for them. A rapper, a software developer, a trader at the market and a sponsor organisation are all being invited to the same floor, and the theme is the instruction: create something, exhibit it, and treat it as an enterprise rather than a hobby.',
     highlights: [
       'Four open calls, running in parallel.',
       'A showcase floor, not a panel.',
       'Partner organisations in the room.',
-      'Open to every Chuka student.',
+      'Open calls for creatives, innovators, entrepreneurs and partners.',
     ],
     openCalls: [
       {
@@ -116,7 +116,7 @@ export const editions: Edition[] = [
     theme: 'YOUTH ENTREPRENEURSHIP',
     title: 'Zinduka Hub 10.0',
     description:
-      'The tenth edition, marking ten years of entrepreneurship at Chuka University, with guest speakers and a full-day programme.',
+      'The tenth edition, marking ten years of entrepreneurship in Chuka, with guest speakers and a full-day programme.',
   },
   {
     edition: 9,
@@ -125,7 +125,7 @@ export const editions: Edition[] = [
     theme: 'BUILD WHAT YOU NEED',
     title: 'Zinduka Hub 9.0',
     description:
-      'A year focused on students solving problems they had met themselves, on campus and at home.',
+      'A year focused on young people solving problems they had met themselves, close to home.',
   },
   {
     edition: 8,
@@ -170,7 +170,7 @@ export const editions: Edition[] = [
     theme: 'SHOW YOUR WORK',
     title: 'Zinduka Hub 4.0',
     description:
-      'The edition that moved the format towards exhibition, with students standing beside what they had made.',
+      'The edition that moved the format towards exhibition, with young people standing beside what they had made.',
   },
   {
     edition: 3,
@@ -179,7 +179,7 @@ export const editions: Edition[] = [
     theme: 'IDEAS WORTH SHARING',
     title: 'Zinduka Hub 3.0',
     description:
-      'A talks-led edition built around students presenting ideas to their peers.',
+      'A talks-led edition built around young people presenting ideas to their peers.',
   },
   {
     edition: 2,
@@ -197,7 +197,7 @@ export const editions: Edition[] = [
     theme: 'THE FIRST ONE',
     title: 'Zinduka Hub 1.0',
     description:
-      'Where it started: a small group of students at Chuka University making room for each other to share ideas.',
+      'Where it started: a small group of young people in Chuka making room for each other to share ideas.',
   },
 ];
 

@@ -9,7 +9,7 @@ Where the two differ, the PDF governs brand identity and `6fa9b69` governs imple
 
 ## Brand (from the PDF)
 
-Zinduka Hub is a program of **AIESEC in Chuka University**. Tagline: _Promote talent, innovation and entrepreneurial culture among the youth._
+Zinduka Hub is an independent, Kenya-wide mission based in Chuka. It began with the support of AIESEC in Chuka, now one partner among others. Tagline: _Nurturing young talent in underserved counties and communities across Kenya._
 
 | Token     | Hex       | Tailwind | Use                                      |
 | --------- | --------- | -------- | ---------------------------------------- |
@@ -77,7 +77,7 @@ Always use Astro's `<Image>` with explicit `widths`, `sizes`, and `width`. Decor
 
 Two deliberate exceptions:
 
-- **Documentary photos that are about colour stay in colour.** The showcase-stand photo on `/zinduka-11` exists to show the AIESEC branding on it, so it skips the grayscale treatment entirely rather than hiding its own point until hover.
+- **Documentary photos that are about colour stay in colour.** The showcase-stand photo on `/zinduka-11` is documentary, so it skips the grayscale treatment entirely.
 - **Cutout portraits sit on a colour ground, never a flat crop.** `talent.png`, `innovation.png`, `leadership.png` and `history-current-edition.png` are transparent PNGs with the subject in the lower third of the frame, built for the FocusCard treatment (a colour panel showing through the transparent area). Used anywhere else, they need the same two things: a `bg-brand` (or tint) panel behind them, and `object-bottom` rather than the default centre, or the crop shows the empty top of the frame instead of the person.
 
 ### Motion

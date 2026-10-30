@@ -16,13 +16,19 @@ import { site } from '../../data/site';
       <br />
       <em class="font-normal">ideas to grow.</em>
     </h1>
-    <p class="mx-auto mt-5 max-w-lg text-base leading-7 font-medium text-ink/70">
-      Bringing talent, innovation, and an entrepreneurial spirit together at
-      Chuka University.
+    <p class="mx-auto mt-5 max-w-xl text-base leading-7 font-medium text-ink/70">
+      Starting in Chuka, Zinduka Hub gives young Kenyans a platform, mentorship
+      and a path to prove their work, so no good idea is lost because of where
+      they live.
     </p>
-    <Button href={site.partnerHref} class="mt-7">
-      Partner with us
-    </Button>
+    <div class="mt-7 flex flex-wrap justify-center gap-3">
+      <Button href="/zinduka-11" icon="arrowRight">
+        Explore Zinduka 11.0
+      </Button>
+      <Button href={site.partnerHref} variant="outline">
+        Partner with us
+      </Button>
+    </div>
   </div>
   {/*
     A cutout with the group in the bottom fifth of a 4:5 frame, so it runs
